@@ -1,5 +1,4 @@
 ---
-
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
@@ -8,8 +7,15 @@ const data = [
     period: "2025",
     title: "Owner/Founder at Adurite Network",
     description: `Started in 2025, making game websites and proxies to help students bypass school censorship.`,
-    location: "Zurich, Switzerland",
-    link: "#_",
+    location: "USA",
+    link: "https://github.com/adurite-network/",
+  },
+  {
+    period: "2024",
+    title: "Owner/Founder at Classboard",
+    description: `A small project started in 2024 to help students get places.`,
+    location: "USA",
+    link: "https://github.com/useclassboard/",
   },
 ];
 ---
@@ -29,7 +35,6 @@ const data = [
           data.map((work, index) => (
             <article class="group relative grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-start ">
               <div class="lg:col-span-2">
-                
                 <Text
                   tag="h3"
                   variant="textSM"

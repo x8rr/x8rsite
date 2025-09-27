@@ -7,7 +7,7 @@ import Oxbow from "@/images/projects/classplay.png";
 import Lexington from "@/images/projects/classboard.png";
 import Doodles from "@/images/projects/ee.png";
 import Caf from "@/images/projects/smirk.png";
- 
+
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
@@ -17,13 +17,20 @@ const data = [
     image: Mesh,
     year: "2025",
     title: "Ethereal",
-    link: "https://etherealproxy.netlify.app/",
+    link: "https://ethereal.x8r.dev",
     description: `A completely static Ultraviolet proxy. Extremely customisable and simple.`,
+  },
+  {
+    image: Doodles,
+    year: "2024 - 2025",
+    title: "Eaglercraft Extras",
+    link: "https://eaglerplus.x8r.dev/",
+    description: `A collection of Eaglercraft packs, clients, skins, worlds, and more.`,
   },
   {
     image: PP,
     year: "2025",
-    link: "https://useadurite.netlify.app/",
+    link: "https://adurite.x8r.dev/",
     title: "Adurite",
     description: `A UBG website with 300+ games, 50+ apps, and a proxy.`,
   },
@@ -40,13 +47,6 @@ const data = [
     title: "Classboard",
     link: "https://useclassboard.vercel.app/",
     description: `A simple link hub for school. Not maintained anymore.`,
-  },
-  {
-    image: Doodles,
-    year: "2024",
-    title: "Eaglercraft Extras",
-    link: "https://eaglercraftextras.github.io/",
-    description: `A collection of Eaglercraft packs, clients, skins, worlds, and more.`,
   },
   {
     image: Caf,
@@ -72,9 +72,9 @@ const data = [
         {
           data.map((project) => (
             <article class="group relative grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-start ">
-                 <div class="absolute -inset-x-1 -inset-y-4 z-0 scale-95 bg-base-50 dark:bg-base-800/20    opacity-0 transition group-hover:scale-100 group-hover:opacity-100 -inset-x-4 rounded-2xl duration-300 " />
+              <div class="absolute -inset-x-1 -inset-y-4 z-0 scale-95 bg-base-50 dark:bg-base-800/20    opacity-0 transition group-hover:scale-100 group-hover:opacity-100 -inset-x-4 rounded-2xl duration-300 " />
               <div class="lg:col-span-2">
-               <div class="flex items-center gap-4 relative">
+                <div class="flex items-center gap-4 relative">
                   <Image
                     src={project.image}
                     alt="Michael Andreuzza"
@@ -97,15 +97,15 @@ const data = [
                         </>
                       </a>
                     </Text>
-                  <Text
-                    tag="p"
-                    variant="textXS"
-                    class="relative z-10 text-base-600 dark:text-base-500      "
-                  >
-                    {project.description}
-                  </Text>
+                    <Text
+                      tag="p"
+                      variant="textXS"
+                      class="relative z-10 text-base-600 dark:text-base-500      "
+                    >
+                      {project.description}
+                    </Text>
                   </div>
-               </div>
+                </div>
               </div>
               <Text
                 tag="p"

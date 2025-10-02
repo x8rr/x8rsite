@@ -1,0 +1,222 @@
+@font-face {
+    font-family: Inter;
+    src: url('font/Inter-Regular.otf');
+}
+
+@font-face {
+    font-family: Inter Bold;
+    src: url('font/Inter-Bold.otf');
+}
+
+body, html {
+    background: url('/img/bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    color: white;
+}
+
+b {
+    font-family: Inter Bold;
+}
+
+:root {
+  /* Stylistic settings for Inter font*/
+  font-family: Inter;
+  font-feature-settings:
+    /*-------- NUMBERS --------*/
+    /* Tabular numbers */ "tnum" 1,
+    /* Slashed zero */ "zero" 1,
+    /* Alternate one */ "cv01" 1,
+    /* Flat-top three */ "cv09" 1,
+    /* Open four */ "cv02" 1,
+    /* Open six */ "cv03" 1,
+    /* Open nine */ "cv04" 1,
+    /*-------- LETTERS --------*/
+    /* Square punctuation */ "ss08" 1,
+    /* Discretionary ligatures */ "dlig" 1,
+    /* Simplified u */ "cv06" 1,
+    /* Capital G with spur */ "cv10" 1,
+    /* Single-story a */ "cv11" 1,
+    /* Compact t */ "cv13" 1;
+}
+
+#pfp {
+    border-radius: 100%;
+    width: 75px;
+    height: 75px;
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.521));
+    margin-right: 15px;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+
+div.projects {
+    overflow: auto;
+    scrollbar-base-color: #1d1d1d;
+    scrollbar-color: transparent transparent;
+    background:transparent;
+    border-radius: 20px;
+    height: 400px;
+    width: 350px;
+    padding: 0px;
+    margin-right: -25px;
+    padding-right: -50px;
+    filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.466));
+    scroll-padding: 0;
+    scrollbar-width: 0;
+}
+
+div#o {
+    background: #1d1d1d;
+    border-radius: 20px;
+    height: 400px;
+    width: 350px;
+    padding: 25px;
+    filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.466));
+}
+
+div#bodycont {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    padding: none;
+    margin: none;
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+
+div#bodycont > div#o {
+    margin: 15px;
+    padding: 25px;
+}
+
+#project {
+    height: 41%;
+    width: 320px;
+    background: #1d1d1d;
+    padding: 10px 25px;
+    border-radius: inherit;
+    margin-bottom: 10px;
+    margin-right: -25px;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    background: none;
+    filter: drop-shadow(0 0 0 transparent);
+    padding: 0;
+    height: fit-content;
+    margin: 0;
+}
+
+.vflex {
+    display: flex;
+    flex-direction: column;
+    background: none;
+    filter: drop-shadow(0 0 0 transparent);
+    margin: 0;
+    height: fit-content;
+    scrollbar-width: thin;
+}
+
+button#see {
+    background: white;
+    color: black;
+    font-family: Inter;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: 500;
+    border: none;
+    width: fit-content;
+    margin: 5px;
+    margin-left: 0;
+    font-size: 16px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+button#see:hover {
+    background: lightgray;
+    scale: 1.05;
+}
+
+button#source {
+    background: #2d2d2d;
+    color: white;
+    font-family: Inter;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: 500;
+    border: none;
+    width: fit-content;
+    font-size: 16px;
+    margin: 5px;
+    filter: drop-shadow(0 0 10px rgba(49, 49, 49, 0.349));
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+button i {
+    margin-right: 8px;
+    font-weight: 200;
+    scale: 1.0;
+}
+
+button#source:hover {
+    background: #3d3d3d;
+    scale: 1.05;
+}
+
+h1, h2, h3 {
+    font-family: Inter Bold;
+    margin-bottom: 0;
+}
+
+#gradient {
+  font-weight: bold;
+  background: linear-gradient(140deg, dodgerblue, skyblue, rgb(0, 153, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 5px rgba(30, 143, 255, 0.2),
+               0 0 10px rgba(255, 255, 255, 0.2),
+               0 0 15px rgba(0, 153, 255, 0.2);
+}
+
+p {
+    color: lightgray;
+}
+
+#skills {
+    list-style: none;
+    padding-left: 0;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    transform: translateY(-10px);
+}
+
+#skills i {
+    height: 40px;
+    border-radius: 0px;
+    text-align: left;
+    font-size: 40px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    transition: 0.3s all;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+}
+
+#skills i:hover {
+    scale: 1.1;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1)) saturate(1.5);
+}
+    

@@ -9,12 +9,23 @@
 }
 
 body, html {
-    background: url('/img/bg.png');
-    background-size: cover;
-    background-attachment: fixed;
     margin: 0;
     color: white;
     font-family: Inter;
+}
+
+#bg-img {
+    background: url('https://avatars.githubusercontent.com/u/159058655');
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur(25px) brightness(0.5);
+    z-index: -1000;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    scale: 120%;
 }
 
 b {
@@ -34,27 +45,27 @@ b {
 
 div.projects {
     overflow: auto;
-    scrollbar-base-color: #1d1d1d;
+    scrollbar-base-color: #3f3f3f6b;
     scrollbar-color: transparent transparent;
     background:transparent;
     border-radius: 20px;
     height: 400px;
     width: 350px;
     padding: 0px;
-    margin-right: -25px;
-    padding-right: -50px;
     filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.466));
     scroll-padding: 0;
     scrollbar-width: 0;
+    box-shadow: 0 0 0 0 transparent;
 }
 
 div#o {
-    background: #1d1d1d;
+    background: #2e2e2e7a;
     border-radius: 20px;
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
     height: 400px;
     width: 350px;
     padding: 25px;
-    transform: translateX(-40px);
     filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.466));
 }
 
@@ -67,25 +78,33 @@ div#bodycont {
     padding: none;
     margin: none;
     display: flex;
-    width: 80%;
+    width: 100%;
     justify-content: center;
-    scale: 0.9;
 }
 
 div#bodycont > div#o {
     margin: 15px;
     padding: 25px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3),
+  0 16px 32px rgba(0, 0, 0, 0.12);
 }
 
 #project {
     height: 41%;
-    width: 320px;
-    background: #1d1d1d;
+    width: 86.5%;
+    background: #2e2e2e7a;
     padding: 10px 25px;
+    backdrop-filter: blur(10px);
     border-radius: inherit;
     margin-bottom: 10px;
+    justify-content: center;
+    align-self: center;
     margin-right: -25px;
+    margin-left: 1px;
+    margin-top: 1px;
     flex-direction: column;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3),
+  0 16px 32px rgba(0, 0, 0, 0.12);
 }
 
 .container {
@@ -101,6 +120,7 @@ div#bodycont > div#o {
     display: flex;
     flex-direction: column;
     background: none;
+    justify-content: center;
     filter: drop-shadow(0 0 0 transparent);
     margin: 0;
     height: fit-content;
@@ -108,8 +128,8 @@ div#bodycont > div#o {
 }
 
 button#see {
-    background: white;
-    color: black;
+    background: rgba(255, 255, 255, 0.233);
+    color: rgb(255, 255, 255);
     font-family: Inter Bold;
     padding: 10px 20px;
     border-radius: 15px;
@@ -118,19 +138,27 @@ button#see {
     width: fit-content;
     margin: 5px;
     margin-left: 0;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.411),
+  0 16px 32px rgba(0, 0, 0, 0.12), 0 0 10px rgba(255, 255, 255, 0.2);
     font-size: 16px;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    filter: brightness(1);
     cursor: pointer;
     transition: 0.3s all;
 }
 
+button#see > * {
+    color: white;
+}
+
 button#see:hover {
-    background: lightgray;
-    scale: 1.05;
+    filter: brightness(0.8);
+    scale: 1.0;
 }
 
 button#source {
-    background: #2d2d2d;
+    background: #2d2d2d56;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3),
+  0 16px 32px rgba(0, 0, 0, 0.12);
     color: white;
     font-family: Inter;
     padding: 10px 20px;
@@ -140,7 +168,6 @@ button#source {
     width: fit-content;
     font-size: 16px;
     margin: 5px;
-    filter: drop-shadow(0 0 10px rgba(49, 49, 49, 0.349));
     cursor: pointer;
     transition: 0.3s all;
 }
@@ -152,8 +179,13 @@ button i {
 }
 
 button#source:hover {
-    background: #3d3d3d;
-    scale: 1.05;
+    filter: brightness(0.8);
+    scale: 1.0;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 h1, h2, h3 {
@@ -193,11 +225,9 @@ p {
     font-size: 40px;
     margin-right: 8px;
     margin-bottom: 8px;
-    transition: 0.3s all;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+    transition: 0.2s all;
 }
 
 #skills i:hover {
     scale: 1.1;
 }
-    

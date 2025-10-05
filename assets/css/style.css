@@ -78,6 +78,7 @@ div#bodycont {
     padding: none;
     margin: none;
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     justify-content: center;
 }

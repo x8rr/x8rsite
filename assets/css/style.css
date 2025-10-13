@@ -91,7 +91,7 @@ div#bodycont > div#o {
 }
 
 #project {
-    height: 41%;
+    height: 49%;
     width: 86.5%;
     background: #2e2e2e7a;
     padding: 10px 25px;
@@ -106,6 +106,7 @@ div#bodycont > div#o {
     flex-direction: column;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3),
   0 16px 32px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
 }
 
 .container {
@@ -231,4 +232,26 @@ p {
 
 #skills i:hover {
     scale: 1.1;
+}
+
+#type {
+    border-radius: 100px;
+    padding: 5px 10px;
+    font-family: inter bold;
+    font-size: 13px;
+}
+
+.contrib {
+    background: dodgerblue;
+    filter: drop-shadow(0 0 50px dodgerblue);
+}
+
+.owner {
+    background: goldenrod;
+    filter: drop-shadow(0 0 50px goldenrod);
+}
+
+.dev {
+    background: green;
+    filter: drop-shadow(0 0 50px green);
 }

@@ -46,6 +46,20 @@
             text-underline-offset: 3px;
         }
 
+        .img::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            width: 300px;
+            height: 300px;
+            left: 20px;
+            background: url("/png/image.png");
+            background-size: cover;
+            background-attachment: fixed;
+            filter: blur(25px);
+            z-index: -9;
+        }
+
         .container {
             display: flex;
             flex-direction: row;
@@ -134,7 +148,9 @@
             <br>
             <br>
             <div class="container">
-                <img src="/png/ascii-art.png" height="300" style="margin-right: 20px; opacity: 0.5;" width="300" alt="">
+                <div class="img" style="width: 300px; height: 300px; margin-right: 20px;">
+                    <img src="/png/image.png" height="300" style="opacity: 0.3;" width="300" alt="">
+                </div>
                 <div class="v">
                     <h2>x8r</h2>
                     <p>front end developer</p>
@@ -144,7 +160,7 @@
                         sites and proxies and tons of other stuff. i'm currently working on [<a target="_blank"
                             href="https://github.com/nautilus-os/">nautilusos</a>] and [<a target="_blank"
                             href="https://sapira.rhw.one/">sapira</a>] (check out both of them), but that's about it
-                        right now.
+                        right now. my discord is @hvtrs btw.
                     </p>
                 </div>
             </div style="margin-bottom: 10%;">

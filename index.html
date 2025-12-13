@@ -25,7 +25,7 @@
         }
 
         body {
-            background: linear-gradient(to top, rgb(10 10 10), black);
+            background: black;
             background-size: cover;
             background-attachment: fixed;
             color: rgb(200, 200, 200);
@@ -41,13 +41,11 @@
             background: rgb(12 12 12);
             height: max-content;
             width: 400px;
+            z-index: 1;
             padding: 20px;
             border-radius: 20px;
             outline: 1px solid rgba(255, 255, 255, 0.1);
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            position: fixed;
+            margin: 10px;
         }
 
         #particles-container {
@@ -72,20 +70,28 @@
             background: linear-gradient(45deg, rgb(99, 0, 0), rgb(0, 0, 0));
             height: 125px;
             width: 100%;
-            position: absolute;
+            position: relative;
             left: 0;
             top: 0;
-            border-radius: 25px 25px 0 0;
-            z-index: -1;
+            border-radius: 20px 20px 0 0;
+            z-index: 0;
+            width: calc(100% + 40px);
+            margin: -20px -20px -60px -20px;
         }
 
         .pfp {
+            position: relative;
+            z-index: 2;
             background: rgb(12 12 12);
             border-radius: 50%;
             height: 100px;
-            z-index: 3846;
             padding: 5px;
             margin-left: -10px;
+        }
+
+
+        .pfp img {
+            z-index: 2947;
         }
 
         h3 {
@@ -133,8 +139,8 @@
         }
 
         .project-card {
-            height: 100px;
-            width: 300px;
+            height: 120px;
+            width: 100%;
             background: rgb(15 15 15);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -147,7 +153,7 @@
 
         .project-card h1 {
             font-size: 20px;
-            margin-top: 2.5px;
+            margin-top: 15px;
         }
 
         .project-card p {
@@ -166,7 +172,7 @@
         ::-webkit-scrollbar {
             background: rgb(15 15 15);
             border-radius: 25px;
-            height: 5px;
+            width: 5px;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -177,6 +183,59 @@
         a:has(button) {
             text-decoration: none;
         }
+
+        .progress-bar {
+            width: 165px;
+            border-radius: 5px;
+            height: 4px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgb(18 18 18);
+        }
+
+        .progress-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+            height: 100%;
+            width: 0%;
+            z-index: 239486;
+            border-radius: 238467px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+            transition: 0.3s;
+        }
+
+        @keyframes progress {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        .click-to-enter {
+            left: 0;
+            top: 0;
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            backdrop-filter: blur(3px) brightness(0.55);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .click-to-enter h2 {
+            color: white;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            position: fixed;
+        }
     </style>
 </head>
 
@@ -184,95 +243,184 @@
 
     <div id="particles-container"></div>
 
-    <div class="profile-container">
-        <div class="banner"></div>
-        <br><br>
-        <img class="pfp" src="/png/pfp.jpg?v=1" alt="">
-        <h1 style="color: white;">x8r</h1>
-        <p>@x8rr</p>
-        <h3>ABOUT</h3>
-        <p>Front end developer, UBG site owner</p>
-        <h3 style="margin-bottom: 0px;">LANGUAGES + SKILLS</h3>
-        <br>
-        <div style="margin-bottom: 20px;" class="container">
-            <button class="lang">
-                <i class="devicon-html5-plain colored"></i>
-            </button>
-            <button class="lang">
-                <i class="devicon-css3-plain colored"></i>
-            </button>
-            <button class="lang">
-                <i class="devicon-tailwindcss-plain colored"></i>
-            </button>
-            <button class="lang">
-                <i class="devicon-javascript-plain colored"></i>
-            </button>
-            <button class="lang">
-                <i class="devicon-astro-plain colored"></i>
-            </button>
-        </div>
-        <h3 style="margin-bottom: 0;">SOCIALS</h3>
-        <br>
-        <div style="margin-bottom: 20px;" class="container">
-            <a href="https://github.com/x8rr" target="_blank">
-                <button style="width: 110px;" class="lang">
-                    <i class="ri-github-fill"></i>&nbsp;
-                    <b>Github</b>
+    <div class="container" style="position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%);">
+        <div class="profile-container">
+            <div class="banner"></div>
+            <img class="pfp" src="/png/pfp.jpg?v=1" alt="">
+            <h1 style="color: white;">x8r</h1>
+            <p>@x8rr</p>
+            <h3>ABOUT</h3>
+            <p>Front end developer, UBG site owner</p>
+            <h3 style="margin-bottom: 0px;">LANGUAGES + SKILLS</h3>
+            <br>
+            <div style="margin-bottom: 20px;" class="container">
+                <button class="lang">
+                    <i class="devicon-html5-plain colored"></i>
                 </button>
-            </a>
-            <a href="https://discord.com/users/979137914464247838" target="_blank">
-                <button class="lang" style="width: 110px;">
-                    <i class="ri-discord-fill"></i>&nbsp;
-                    <b>Discord</b>
+                <button class="lang">
+                    <i class="devicon-css3-plain colored"></i>
                 </button>
-            </a>
-        </div>
-        <h3 style="margin-bottom: 0;">PROJECTS</h3>
-        <br>
-        <div class="container"
-            style="overflow-x: scroll; mask-image: linear-gradient(to right, black 90%, transparent 100%);">
-            <div class="project-card">
-                <h1>Cherri</h1>
-                <p>Unblocked games website. 1.5k+ users.</p>
-                <a href="https://cherrion.top/" target="_blank">
-                    <button class="lang">
-                        <i class="ri-external-link-line"></i>
-                    </button>
-                </a>
-                <a href="https://github.com/x8rr/cherri" target="_blank">
-                    <button class="lang">
-                        <i class="ri-github-fill"></i>
-                    </button>
-                </a>
-                <a href="https://discord.gg/hUYzETaQ9U" target="_blank">
-                    <button class="lang">
-                        <i class="ri-discord-fill"></i>
-                    </button>
-                </a>
+                <button class="lang">
+                    <i class="devicon-tailwindcss-plain colored"></i>
+                </button>
+                <button class="lang">
+                    <i class="devicon-javascript-plain colored"></i>
+                </button>
+                <button class="lang">
+                    <i class="devicon-astro-plain colored"></i>
+                </button>
+                <button class="lang">
+                    <i class="devicon-react-plain colored"></i>
+                </button>
             </div>
-            <div class="project-card">
-                <h1>Eaglercraft Extras</h1>
-                <p>Minecraft themed Eaglercraft website.</p>
-                <a href="https://eaglercraftextras.github.io/" target="_blank">
-                    <button class="lang">
-                        <i class="ri-external-link-line"></i>
+            <h3 style="margin-bottom: 0;">SOCIALS</h3>
+            <br>
+            <div style="margin-bottom: 20px;" class="container">
+                <a href="https://github.com/x8rr" target="_blank">
+                    <button style="width: 110px;" class="lang">
+                        <i class="ri-github-fill"></i>&nbsp;
+                        <b>Github</b>
                     </button>
                 </a>
-                <a href="https://github.com/x8rr/Eaglercraft-Extras" target="_blank">
-                    <button class="lang">
-                        <i class="ri-github-fill"></i>
+                <a href="https://discord.com/users/979137914464247838" target="_blank">
+                    <button class="lang" style="width: 110px;">
+                        <i class="ri-discord-fill"></i>&nbsp;
+                        <b>Discord</b>
+                    </button>
+                </a>
+                <a href="https://steamcommunity.com/id/x8rr/" target="_blank">
+                    <button class="lang" style="width: 110px;">
+                        <i class="ri-steam-fill"></i>&nbsp;
+                        <b>Steam</b>
                     </button>
                 </a>
             </div>
         </div>
-        <br>
+        <div class="container" style="flex-direction: column;">
+            <div class="profile-container">
+                <div class="container">
+                    <img src="/png/toxicity.jpg"
+                        style="border-radius: 15px; margin-right: 20px; filter: drop-shadow(0 0 25px #8c643a4d); height: 125px;"
+                        alt="toxicity album cover">
+                    <div class="container" style="flex-direction: column;">
+                        <h2 style="margin-bottom: -10px; color: white; margin-top: 10px;">Chop Suey!</h2>
+                        <p>System of a Down</p>
+                        <div class="container">
+                            <button class="lang" style="height: 35px; width: 35px;" onclick="pausePlay()">
+                                <i class="ri-play-fill" style="font-size: 17px;"></i>
+                            </button>
+                            <button class="lang" style="height: 35px; width: 35px;" onclick="muteUnmute()">
+                                <i class="ri-volume-up-line" style="font-size: 17px;"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="container"
+                    style="flex-wrap: wrap; height: 335px; overflow-y: auto; mask-image: linear-gradient(to top, transparent 5%, black 15%);">
+                    <div style="height: 10px; margin: 0;"></div>
+                    <div class="project-card">
+                        <h1>Cherri</h1>
+                        <p>Unblocked games website. 1.5k+ users.</p>
+                        <a href="https://cherrion.top/" target="_blank">
+                            <button class="lang">
+                                <i class="ri-external-link-line"></i>
+                            </button>
+                        </a>
+                        <a href="https://github.com/x8rr/cherri" target="_blank">
+                            <button class="lang">
+                                <i class="ri-github-fill"></i>
+                            </button>
+                        </a>
+                        <a href="https://discord.gg/hUYzETaQ9U" target="_blank">
+                            <button class="lang">
+                                <i class="ri-discord-fill"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <h1>Eaglercraft Extras</h1>
+                        <p>Minecraft themed Eaglercraft website.</p>
+                        <a href="https://eaglercraftextras.github.io/" target="_blank">
+                            <button class="lang">
+                                <i class="ri-external-link-line"></i>
+                            </button>
+                        </a>
+                        <a href="https://github.com/x8rr/Eaglercraft-Extras" target="_blank">
+                            <button class="lang">
+                                <i class="ri-github-fill"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="click-to-enter">
+        <h2>click to enter...</h2>
+    </div>
+
+    <audio src="/mp3/cs.mp3" id="audio" loop></audio>
 
     <script>
         particlesJS.load("particles-container", "/particles.json", () => {
             console.log("particles js loaded!")
         })
+    </script>
+    <script>
+        const cte = document.querySelector(".click-to-enter")
+        const audio = document.getElementById("audio")
+        cte.addEventListener("click", () => {
+            const text = cte.querySelector("h2")
+            cte.style.pointerEvents = "none"
+            setTimeout(() => {
+                text.textContent = "we're"
+            }, 250)
+            setTimeout(() => {
+                text.textContent = "we're rolling"
+            }, 500)
+            setTimeout(() => {
+                text.textContent = "we're rolling suicide"
+            }, 750)
+            setTimeout(() => {
+                cte.style.opacity = 0;
+            }, 1200)
+            audio.play()
+            document.querySelector(".progress-bar-fill").style.animation = "210s progress linear infinite"
+            document.querySelector(".ri-play-fill").classList.add("ri-pause-fill")
+            document.querySelector(".ri-play-fill").classList.remove("ri-play-fill")
+        })
+
+        function muteUnmute() {
+            if (audio.muted === false) {
+                audio.muted = true
+                document.querySelector(".ri-volume-up-line").classList.add("ri-volume-mute-line")
+                document.querySelector(".ri-volume-up-line").classList.remove("ri-volume-up-line")
+            } else {
+                audio.muted = false
+                document.querySelector(".ri-volume-mute-line").classList.add("ri-volume-up-line")
+                document.querySelector(".ri-volume-mute-line").classList.remove("ri-volume-mute-line")
+            }
+        }
+
+        function pausePlay() {
+            if (audio.paused) {
+                audio.play()
+                document.querySelector(".progress-bar-fill").style.animationPlayState = "running"
+                document.querySelector(".ri-play-fill").classList.add("ri-pause-fill")
+                document.querySelector(".ri-play-fill").classList.remove("ri-play-fill")
+            } else {
+                audio.pause()
+                document.querySelector(".progress-bar-fill").style.animationPlayState = "paused"
+                document.querySelector(".ri-pause-fill").classList.add("ri-play-fill")
+                document.querySelector(".ri-pause-fill").classList.remove("ri-pause-fill")
+            }
+        }
     </script>
 </body>
 

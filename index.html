@@ -255,22 +255,22 @@
             <br>
             <div style="margin-bottom: 20px;" class="container">
                 <button class="lang">
-                    <i class="devicon-html5-plain colored"></i>
+                    <i class="devicon-html5-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
                 </button>
                 <button class="lang">
-                    <i class="devicon-css3-plain colored"></i>
+                    <i class="devicon-css3-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
                 </button>
                 <button class="lang">
-                    <i class="devicon-tailwindcss-plain colored"></i>
+                    <i class="devicon-tailwindcss-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
                 </button>
                 <button class="lang">
-                    <i class="devicon-javascript-plain colored"></i>
+                    <i class="devicon-javascript-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
                 </button>
                 <button class="lang">
-                    <i class="devicon-astro-plain colored"></i>
+                    <i class="devicon-astro-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
                 </button>
                 <button class="lang">
-                    <i class="devicon-react-plain colored"></i>
+                    <i class="devicon-react-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
                 </button>
             </div>
             <h3 style="margin-bottom: 0;">SOCIALS</h3>
@@ -299,12 +299,12 @@
         <div class="container" style="flex-direction: column;">
             <div class="profile-container">
                 <div class="container">
-                    <img src="/png/toxicity.jpg"
-                        style="border-radius: 15px; margin-right: 20px; filter: drop-shadow(0 0 25px #8c643a4d); height: 125px;"
+                    <img src="/png/sya.png"
+                        style="border-radius: 15px; margin-right: 20px; filter: drop-shadow(0 0 25px #ff9a1744); height: 125px;"
                         alt="toxicity album cover">
                     <div class="container" style="flex-direction: column;">
-                        <h2 style="margin-bottom: -10px; color: white; margin-top: 10px;">Chop Suey!</h2>
-                        <p>System of a Down</p>
+                        <h2 style="margin-bottom: -10px; color: white; margin-top: 10px;">See You Again</h2>
+                        <p>Tyler, The Creator</p>
                         <div class="container">
                             <button class="lang" style="height: 35px; width: 35px;" onclick="pausePlay()">
                                 <i class="ri-play-fill" style="font-size: 17px;"></i>
@@ -365,7 +365,7 @@
         <h2>click to enter...</h2>
     </div>
 
-    <audio src="/mp3/cs.mp3" id="audio" loop></audio>
+    <audio src="/mp3/sya.mp3" id="audio" loop></audio>
 
     <script>
         particlesJS.load("particles-container", "/particles.json", () => {
@@ -379,19 +379,32 @@
             const text = cte.querySelector("h2")
             cte.style.pointerEvents = "none"
             setTimeout(() => {
-                text.textContent = "we're"
-            }, 250)
+                text.textContent = "ok"
+            }, 0)
             setTimeout(() => {
-                text.textContent = "we're rolling"
-            }, 500)
+                text.textContent = "ok ok"
+            }, 400)
             setTimeout(() => {
-                text.textContent = "we're rolling suicide"
-            }, 750)
+                text.textContent = "ok ok ok"
+            }, 800)
+            setTimeout(() => {
+                text.textContent = "ok ok ok ok"
+            }, 1200)
+            setTimeout(() => {
+                text.textContent = "ok ok ok ok ok"
+            }, 1600)
+            setTimeout(() => {
+                text.textContent = "ok ok ok ok ok ok"
+            }, 2000)
+            setTimeout(() => {
+                text.textContent = "ok ok ok ok ok ok o-"
+            }, 2400)
             setTimeout(() => {
                 cte.style.opacity = 0;
-            }, 1200)
-            audio.play()
-            document.querySelector(".progress-bar-fill").style.animation = "210s progress linear infinite"
+            }, 2800)
+            audio.curerntTime = 0
+            pausePlay()
+            document.querySelector(".progress-bar-fill").style.animation = "180s progress linear infinite"
             document.querySelector(".ri-play-fill").classList.add("ri-pause-fill")
             document.querySelector(".ri-play-fill").classList.remove("ri-play-fill")
         })

@@ -5,436 +5,390 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>x8r</title>
-    <link rel="shortcut icon" href="/png/pfp.jpg?v=1" type="image/x-icon">
-    <link rel="stylesheet" href="/icons/remixicon.css?v=1">
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <script>
-        /**
-     * Minified by jsDelivr using Terser v5.37.0.
-     * Original file: /npm/particles.js@2.0.0/particles.js
-     *
-     * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
-     */
-        var pJS = function (e, a) { var t = document.querySelector("#" + e + " > .particles-js-canvas-el"); this.pJS = { canvas: { el: t, w: t.offsetWidth, h: t.offsetHeight }, particles: { number: { value: 400, density: { enable: !0, value_area: 800 } }, color: { value: "#fff" }, shape: { type: "circle", stroke: { width: 0, color: "#ff0000" }, polygon: { nb_sides: 5 }, image: { src: "", width: 100, height: 100 } }, opacity: { value: 1, random: !1, anim: { enable: !1, speed: 2, opacity_min: 0, sync: !1 } }, size: { value: 20, random: !1, anim: { enable: !1, speed: 20, size_min: 0, sync: !1 } }, line_linked: { enable: !0, distance: 100, color: "#fff", opacity: 1, width: 1 }, move: { enable: !0, speed: 2, direction: "none", random: !1, straight: !1, out_mode: "out", bounce: !1, attract: { enable: !1, rotateX: 3e3, rotateY: 3e3 } }, array: [] }, interactivity: { detect_on: "canvas", events: { onhover: { enable: !0, mode: "grab" }, onclick: { enable: !0, mode: "push" }, resize: !0 }, modes: { grab: { distance: 100, line_linked: { opacity: 1 } }, bubble: { distance: 200, size: 80, duration: .4 }, repulse: { distance: 200, duration: .4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }, mouse: {} }, retina_detect: !1, fn: { interact: {}, modes: {}, vendors: {} }, tmp: {} }; var i = this.pJS; a && Object.deepExtend(i, a), i.tmp.obj = { size_value: i.particles.size.value, size_anim_speed: i.particles.size.anim.speed, move_speed: i.particles.move.speed, line_linked_distance: i.particles.line_linked.distance, line_linked_width: i.particles.line_linked.width, mode_grab_distance: i.interactivity.modes.grab.distance, mode_bubble_distance: i.interactivity.modes.bubble.distance, mode_bubble_size: i.interactivity.modes.bubble.size, mode_repulse_distance: i.interactivity.modes.repulse.distance }, i.fn.retinaInit = function () { i.retina_detect && window.devicePixelRatio > 1 ? (i.canvas.pxratio = window.devicePixelRatio, i.tmp.retina = !0) : (i.canvas.pxratio = 1, i.tmp.retina = !1), i.canvas.w = i.canvas.el.offsetWidth * i.canvas.pxratio, i.canvas.h = i.canvas.el.offsetHeight * i.canvas.pxratio, i.particles.size.value = i.tmp.obj.size_value * i.canvas.pxratio, i.particles.size.anim.speed = i.tmp.obj.size_anim_speed * i.canvas.pxratio, i.particles.move.speed = i.tmp.obj.move_speed * i.canvas.pxratio, i.particles.line_linked.distance = i.tmp.obj.line_linked_distance * i.canvas.pxratio, i.interactivity.modes.grab.distance = i.tmp.obj.mode_grab_distance * i.canvas.pxratio, i.interactivity.modes.bubble.distance = i.tmp.obj.mode_bubble_distance * i.canvas.pxratio, i.particles.line_linked.width = i.tmp.obj.line_linked_width * i.canvas.pxratio, i.interactivity.modes.bubble.size = i.tmp.obj.mode_bubble_size * i.canvas.pxratio, i.interactivity.modes.repulse.distance = i.tmp.obj.mode_repulse_distance * i.canvas.pxratio }, i.fn.canvasInit = function () { i.canvas.ctx = i.canvas.el.getContext("2d") }, i.fn.canvasSize = function () { i.canvas.el.width = i.canvas.w, i.canvas.el.height = i.canvas.h, i && i.interactivity.events.resize && window.addEventListener("resize", (function () { i.canvas.w = i.canvas.el.offsetWidth, i.canvas.h = i.canvas.el.offsetHeight, i.tmp.retina && (i.canvas.w *= i.canvas.pxratio, i.canvas.h *= i.canvas.pxratio), i.canvas.el.width = i.canvas.w, i.canvas.el.height = i.canvas.h, i.particles.move.enable || (i.fn.particlesEmpty(), i.fn.particlesCreate(), i.fn.particlesDraw(), i.fn.vendors.densityAutoParticles()), i.fn.vendors.densityAutoParticles() })) }, i.fn.canvasPaint = function () { i.canvas.ctx.fillRect(0, 0, i.canvas.w, i.canvas.h) }, i.fn.canvasClear = function () { i.canvas.ctx.clearRect(0, 0, i.canvas.w, i.canvas.h) }, i.fn.particle = function (e, a, t) { if (this.radius = (i.particles.size.random ? Math.random() : 1) * i.particles.size.value, i.particles.size.anim.enable && (this.size_status = !1, this.vs = i.particles.size.anim.speed / 100, i.particles.size.anim.sync || (this.vs = this.vs * Math.random())), this.x = t ? t.x : Math.random() * i.canvas.w, this.y = t ? t.y : Math.random() * i.canvas.h, this.x > i.canvas.w - 2 * this.radius ? this.x = this.x - this.radius : this.x < 2 * this.radius && (this.x = this.x + this.radius), this.y > i.canvas.h - 2 * this.radius ? this.y = this.y - this.radius : this.y < 2 * this.radius && (this.y = this.y + this.radius), i.particles.move.bounce && i.fn.vendors.checkOverlap(this, t), this.color = {}, "object" == typeof e.value) if (e.value instanceof Array) { var n = e.value[Math.floor(Math.random() * i.particles.color.value.length)]; this.color.rgb = hexToRgb(n) } else null != e.value.r && null != e.value.g && null != e.value.b && (this.color.rgb = { r: e.value.r, g: e.value.g, b: e.value.b }), null != e.value.h && null != e.value.s && null != e.value.l && (this.color.hsl = { h: e.value.h, s: e.value.s, l: e.value.l }); else "random" == e.value ? this.color.rgb = { r: Math.floor(256 * Math.random()) + 0, g: Math.floor(256 * Math.random()) + 0, b: Math.floor(256 * Math.random()) + 0 } : "string" == typeof e.value && (this.color = e, this.color.rgb = hexToRgb(this.color.value)); this.opacity = (i.particles.opacity.random ? Math.random() : 1) * i.particles.opacity.value, i.particles.opacity.anim.enable && (this.opacity_status = !1, this.vo = i.particles.opacity.anim.speed / 100, i.particles.opacity.anim.sync || (this.vo = this.vo * Math.random())); var s = {}; switch (i.particles.move.direction) { case "top": s = { x: 0, y: -1 }; break; case "top-right": s = { x: .5, y: -.5 }; break; case "right": s = { x: 1, y: -0 }; break; case "bottom-right": s = { x: .5, y: .5 }; break; case "bottom": s = { x: 0, y: 1 }; break; case "bottom-left": s = { x: -.5, y: 1 }; break; case "left": s = { x: -1, y: 0 }; break; case "top-left": s = { x: -.5, y: -.5 }; break; default: s = { x: 0, y: 0 } }i.particles.move.straight ? (this.vx = s.x, this.vy = s.y, i.particles.move.random && (this.vx = this.vx * Math.random(), this.vy = this.vy * Math.random())) : (this.vx = s.x + Math.random() - .5, this.vy = s.y + Math.random() - .5), this.vx_i = this.vx, this.vy_i = this.vy; var r = i.particles.shape.type; if ("object" == typeof r) { if (r instanceof Array) { var c = r[Math.floor(Math.random() * r.length)]; this.shape = c } } else this.shape = r; if ("image" == this.shape) { var o = i.particles.shape; this.img = { src: o.image.src, ratio: o.image.width / o.image.height }, this.img.ratio || (this.img.ratio = 1), "svg" == i.tmp.img_type && null != i.tmp.source_svg && (i.fn.vendors.createSvgImg(this), i.tmp.pushing && (this.img.loaded = !1)) } }, i.fn.particle.prototype.draw = function () { var e = this; if (null != e.radius_bubble) var a = e.radius_bubble; else a = e.radius; if (null != e.opacity_bubble) var t = e.opacity_bubble; else t = e.opacity; if (e.color.rgb) var n = "rgba(" + e.color.rgb.r + "," + e.color.rgb.g + "," + e.color.rgb.b + "," + t + ")"; else n = "hsla(" + e.color.hsl.h + "," + e.color.hsl.s + "%," + e.color.hsl.l + "%," + t + ")"; switch (i.canvas.ctx.fillStyle = n, i.canvas.ctx.beginPath(), e.shape) { case "circle": i.canvas.ctx.arc(e.x, e.y, a, 0, 2 * Math.PI, !1); break; case "edge": i.canvas.ctx.rect(e.x - a, e.y - a, 2 * a, 2 * a); break; case "triangle": i.fn.vendors.drawShape(i.canvas.ctx, e.x - a, e.y + a / 1.66, 2 * a, 3, 2); break; case "polygon": i.fn.vendors.drawShape(i.canvas.ctx, e.x - a / (i.particles.shape.polygon.nb_sides / 3.5), e.y - a / .76, 2.66 * a / (i.particles.shape.polygon.nb_sides / 3), i.particles.shape.polygon.nb_sides, 1); break; case "star": i.fn.vendors.drawShape(i.canvas.ctx, e.x - 2 * a / (i.particles.shape.polygon.nb_sides / 4), e.y - a / 1.52, 2 * a * 2.66 / (i.particles.shape.polygon.nb_sides / 3), i.particles.shape.polygon.nb_sides, 2); break; case "image": if ("svg" == i.tmp.img_type) var s = e.img.obj; else s = i.tmp.img_obj; s && i.canvas.ctx.drawImage(s, e.x - a, e.y - a, 2 * a, 2 * a / e.img.ratio) }i.canvas.ctx.closePath(), i.particles.shape.stroke.width > 0 && (i.canvas.ctx.strokeStyle = i.particles.shape.stroke.color, i.canvas.ctx.lineWidth = i.particles.shape.stroke.width, i.canvas.ctx.stroke()), i.canvas.ctx.fill() }, i.fn.particlesCreate = function () { for (var e = 0; e < i.particles.number.value; e++)i.particles.array.push(new i.fn.particle(i.particles.color, i.particles.opacity.value)) }, i.fn.particlesUpdate = function () { for (var e = 0; e < i.particles.array.length; e++) { var a = i.particles.array[e]; if (i.particles.move.enable) { var t = i.particles.move.speed / 2; a.x += a.vx * t, a.y += a.vy * t } if (i.particles.opacity.anim.enable && (1 == a.opacity_status ? (a.opacity >= i.particles.opacity.value && (a.opacity_status = !1), a.opacity += a.vo) : (a.opacity <= i.particles.opacity.anim.opacity_min && (a.opacity_status = !0), a.opacity -= a.vo), a.opacity < 0 && (a.opacity = 0)), i.particles.size.anim.enable && (1 == a.size_status ? (a.radius >= i.particles.size.value && (a.size_status = !1), a.radius += a.vs) : (a.radius <= i.particles.size.anim.size_min && (a.size_status = !0), a.radius -= a.vs), a.radius < 0 && (a.radius = 0)), "bounce" == i.particles.move.out_mode) var n = { x_left: a.radius, x_right: i.canvas.w, y_top: a.radius, y_bottom: i.canvas.h }; else n = { x_left: -a.radius, x_right: i.canvas.w + a.radius, y_top: -a.radius, y_bottom: i.canvas.h + a.radius }; if (a.x - a.radius > i.canvas.w ? (a.x = n.x_left, a.y = Math.random() * i.canvas.h) : a.x + a.radius < 0 && (a.x = n.x_right, a.y = Math.random() * i.canvas.h), a.y - a.radius > i.canvas.h ? (a.y = n.y_top, a.x = Math.random() * i.canvas.w) : a.y + a.radius < 0 && (a.y = n.y_bottom, a.x = Math.random() * i.canvas.w), "bounce" === i.particles.move.out_mode) (a.x + a.radius > i.canvas.w || a.x - a.radius < 0) && (a.vx = -a.vx), (a.y + a.radius > i.canvas.h || a.y - a.radius < 0) && (a.vy = -a.vy); if (isInArray("grab", i.interactivity.events.onhover.mode) && i.fn.modes.grabParticle(a), (isInArray("bubble", i.interactivity.events.onhover.mode) || isInArray("bubble", i.interactivity.events.onclick.mode)) && i.fn.modes.bubbleParticle(a), (isInArray("repulse", i.interactivity.events.onhover.mode) || isInArray("repulse", i.interactivity.events.onclick.mode)) && i.fn.modes.repulseParticle(a), i.particles.line_linked.enable || i.particles.move.attract.enable) for (var s = e + 1; s < i.particles.array.length; s++) { var r = i.particles.array[s]; i.particles.line_linked.enable && i.fn.interact.linkParticles(a, r), i.particles.move.attract.enable && i.fn.interact.attractParticles(a, r), i.particles.move.bounce && i.fn.interact.bounceParticles(a, r) } } }, i.fn.particlesDraw = function () { i.canvas.ctx.clearRect(0, 0, i.canvas.w, i.canvas.h), i.fn.particlesUpdate(); for (var e = 0; e < i.particles.array.length; e++) { i.particles.array[e].draw() } }, i.fn.particlesEmpty = function () { i.particles.array = [] }, i.fn.particlesRefresh = function () { cancelRequestAnimFrame(i.fn.checkAnimFrame), cancelRequestAnimFrame(i.fn.drawAnimFrame), i.tmp.source_svg = void 0, i.tmp.img_obj = void 0, i.tmp.count_svg = 0, i.fn.particlesEmpty(), i.fn.canvasClear(), i.fn.vendors.start() }, i.fn.interact.linkParticles = function (e, a) { var t = e.x - a.x, n = e.y - a.y, s = Math.sqrt(t * t + n * n); if (s <= i.particles.line_linked.distance) { var r = i.particles.line_linked.opacity - s / (1 / i.particles.line_linked.opacity) / i.particles.line_linked.distance; if (r > 0) { var c = i.particles.line_linked.color_rgb_line; i.canvas.ctx.strokeStyle = "rgba(" + c.r + "," + c.g + "," + c.b + "," + r + ")", i.canvas.ctx.lineWidth = i.particles.line_linked.width, i.canvas.ctx.beginPath(), i.canvas.ctx.moveTo(e.x, e.y), i.canvas.ctx.lineTo(a.x, a.y), i.canvas.ctx.stroke(), i.canvas.ctx.closePath() } } }, i.fn.interact.attractParticles = function (e, a) { var t = e.x - a.x, n = e.y - a.y; if (Math.sqrt(t * t + n * n) <= i.particles.line_linked.distance) { var s = t / (1e3 * i.particles.move.attract.rotateX), r = n / (1e3 * i.particles.move.attract.rotateY); e.vx -= s, e.vy -= r, a.vx += s, a.vy += r } }, i.fn.interact.bounceParticles = function (e, a) { var t = e.x - a.x, i = e.y - a.y; Math.sqrt(t * t + i * i) <= e.radius + a.radius && (e.vx = -e.vx, e.vy = -e.vy, a.vx = -a.vx, a.vy = -a.vy) }, i.fn.modes.pushParticles = function (e, a) { i.tmp.pushing = !0; for (var t = 0; t < e; t++)i.particles.array.push(new i.fn.particle(i.particles.color, i.particles.opacity.value, { x: a ? a.pos_x : Math.random() * i.canvas.w, y: a ? a.pos_y : Math.random() * i.canvas.h })), t == e - 1 && (i.particles.move.enable || i.fn.particlesDraw(), i.tmp.pushing = !1) }, i.fn.modes.removeParticles = function (e) { i.particles.array.splice(0, e), i.particles.move.enable || i.fn.particlesDraw() }, i.fn.modes.bubbleParticle = function (e) { if (i.interactivity.events.onhover.enable && isInArray("bubble", i.interactivity.events.onhover.mode)) { var a = e.x - i.interactivity.mouse.pos_x, t = e.y - i.interactivity.mouse.pos_y, n = 1 - (l = Math.sqrt(a * a + t * t)) / i.interactivity.modes.bubble.distance; function s() { e.opacity_bubble = e.opacity, e.radius_bubble = e.radius } if (l <= i.interactivity.modes.bubble.distance) { if (n >= 0 && "mousemove" == i.interactivity.status) { if (i.interactivity.modes.bubble.size != i.particles.size.value) if (i.interactivity.modes.bubble.size > i.particles.size.value) { (c = e.radius + i.interactivity.modes.bubble.size * n) >= 0 && (e.radius_bubble = c) } else { var r = e.radius - i.interactivity.modes.bubble.size, c = e.radius - r * n; e.radius_bubble = c > 0 ? c : 0 } var o; if (i.interactivity.modes.bubble.opacity != i.particles.opacity.value) if (i.interactivity.modes.bubble.opacity > i.particles.opacity.value) (o = i.interactivity.modes.bubble.opacity * n) > e.opacity && o <= i.interactivity.modes.bubble.opacity && (e.opacity_bubble = o); else (o = e.opacity - (i.particles.opacity.value - i.interactivity.modes.bubble.opacity) * n) < e.opacity && o >= i.interactivity.modes.bubble.opacity && (e.opacity_bubble = o) } } else s(); "mouseleave" == i.interactivity.status && s() } else if (i.interactivity.events.onclick.enable && isInArray("bubble", i.interactivity.events.onclick.mode)) { if (i.tmp.bubble_clicking) { a = e.x - i.interactivity.mouse.click_pos_x, t = e.y - i.interactivity.mouse.click_pos_y; var l = Math.sqrt(a * a + t * t), v = ((new Date).getTime() - i.interactivity.mouse.click_time) / 1e3; v > i.interactivity.modes.bubble.duration && (i.tmp.bubble_duration_end = !0), v > 2 * i.interactivity.modes.bubble.duration && (i.tmp.bubble_clicking = !1, i.tmp.bubble_duration_end = !1) } function p(a, t, n, s, r) { if (a != t) if (i.tmp.bubble_duration_end) null != n && (o = a + (a - (s - v * (s - a) / i.interactivity.modes.bubble.duration)), "size" == r && (e.radius_bubble = o), "opacity" == r && (e.opacity_bubble = o)); else if (l <= i.interactivity.modes.bubble.distance) { if (null != n) var c = n; else c = s; if (c != a) { var o = s - v * (s - a) / i.interactivity.modes.bubble.duration; "size" == r && (e.radius_bubble = o), "opacity" == r && (e.opacity_bubble = o) } } else "size" == r && (e.radius_bubble = void 0), "opacity" == r && (e.opacity_bubble = void 0) } i.tmp.bubble_clicking && (p(i.interactivity.modes.bubble.size, i.particles.size.value, e.radius_bubble, e.radius, "size"), p(i.interactivity.modes.bubble.opacity, i.particles.opacity.value, e.opacity_bubble, e.opacity, "opacity")) } }, i.fn.modes.repulseParticle = function (e) { if (i.interactivity.events.onhover.enable && isInArray("repulse", i.interactivity.events.onhover.mode) && "mousemove" == i.interactivity.status) { var a = e.x - i.interactivity.mouse.pos_x, t = e.y - i.interactivity.mouse.pos_y, n = Math.sqrt(a * a + t * t), s = { x: a / n, y: t / n }, r = clamp(1 / (o = i.interactivity.modes.repulse.distance) * (-1 * Math.pow(n / o, 2) + 1) * o * 100, 0, 50), c = { x: e.x + s.x * r, y: e.y + s.y * r }; "bounce" == i.particles.move.out_mode ? (c.x - e.radius > 0 && c.x + e.radius < i.canvas.w && (e.x = c.x), c.y - e.radius > 0 && c.y + e.radius < i.canvas.h && (e.y = c.y)) : (e.x = c.x, e.y = c.y) } else if (i.interactivity.events.onclick.enable && isInArray("repulse", i.interactivity.events.onclick.mode)) if (i.tmp.repulse_finish || (i.tmp.repulse_count++, i.tmp.repulse_count == i.particles.array.length && (i.tmp.repulse_finish = !0)), i.tmp.repulse_clicking) { var o = Math.pow(i.interactivity.modes.repulse.distance / 6, 3), l = i.interactivity.mouse.click_pos_x - e.x, v = i.interactivity.mouse.click_pos_y - e.y, p = l * l + v * v, d = -o / p * 1; p <= o && function () { var a = Math.atan2(v, l); if (e.vx = d * Math.cos(a), e.vy = d * Math.sin(a), "bounce" == i.particles.move.out_mode) { var t = { x: e.x + e.vx, y: e.y + e.vy }; (t.x + e.radius > i.canvas.w || t.x - e.radius < 0) && (e.vx = -e.vx), (t.y + e.radius > i.canvas.h || t.y - e.radius < 0) && (e.vy = -e.vy) } }() } else 0 == i.tmp.repulse_clicking && (e.vx = e.vx_i, e.vy = e.vy_i) }, i.fn.modes.grabParticle = function (e) { if (i.interactivity.events.onhover.enable && "mousemove" == i.interactivity.status) { var a = e.x - i.interactivity.mouse.pos_x, t = e.y - i.interactivity.mouse.pos_y, n = Math.sqrt(a * a + t * t); if (n <= i.interactivity.modes.grab.distance) { var s = i.interactivity.modes.grab.line_linked.opacity - n / (1 / i.interactivity.modes.grab.line_linked.opacity) / i.interactivity.modes.grab.distance; if (s > 0) { var r = i.particles.line_linked.color_rgb_line; i.canvas.ctx.strokeStyle = "rgba(" + r.r + "," + r.g + "," + r.b + "," + s + ")", i.canvas.ctx.lineWidth = i.particles.line_linked.width, i.canvas.ctx.beginPath(), i.canvas.ctx.moveTo(e.x, e.y), i.canvas.ctx.lineTo(i.interactivity.mouse.pos_x, i.interactivity.mouse.pos_y), i.canvas.ctx.stroke(), i.canvas.ctx.closePath() } } } }, i.fn.vendors.eventsListeners = function () { "window" == i.interactivity.detect_on ? i.interactivity.el = window : i.interactivity.el = i.canvas.el, (i.interactivity.events.onhover.enable || i.interactivity.events.onclick.enable) && (i.interactivity.el.addEventListener("mousemove", (function (e) { if (i.interactivity.el == window) var a = e.clientX, t = e.clientY; else a = e.offsetX || e.clientX, t = e.offsetY || e.clientY; i.interactivity.mouse.pos_x = a, i.interactivity.mouse.pos_y = t, i.tmp.retina && (i.interactivity.mouse.pos_x *= i.canvas.pxratio, i.interactivity.mouse.pos_y *= i.canvas.pxratio), i.interactivity.status = "mousemove" })), i.interactivity.el.addEventListener("mouseleave", (function (e) { i.interactivity.mouse.pos_x = null, i.interactivity.mouse.pos_y = null, i.interactivity.status = "mouseleave" }))), i.interactivity.events.onclick.enable && i.interactivity.el.addEventListener("click", (function () { if (i.interactivity.mouse.click_pos_x = i.interactivity.mouse.pos_x, i.interactivity.mouse.click_pos_y = i.interactivity.mouse.pos_y, i.interactivity.mouse.click_time = (new Date).getTime(), i.interactivity.events.onclick.enable) switch (i.interactivity.events.onclick.mode) { case "push": i.particles.move.enable || 1 == i.interactivity.modes.push.particles_nb ? i.fn.modes.pushParticles(i.interactivity.modes.push.particles_nb, i.interactivity.mouse) : i.interactivity.modes.push.particles_nb > 1 && i.fn.modes.pushParticles(i.interactivity.modes.push.particles_nb); break; case "remove": i.fn.modes.removeParticles(i.interactivity.modes.remove.particles_nb); break; case "bubble": i.tmp.bubble_clicking = !0; break; case "repulse": i.tmp.repulse_clicking = !0, i.tmp.repulse_count = 0, i.tmp.repulse_finish = !1, setTimeout((function () { i.tmp.repulse_clicking = !1 }), 1e3 * i.interactivity.modes.repulse.duration) } })) }, i.fn.vendors.densityAutoParticles = function () { if (i.particles.number.density.enable) { var e = i.canvas.el.width * i.canvas.el.height / 1e3; i.tmp.retina && (e /= 2 * i.canvas.pxratio); var a = e * i.particles.number.value / i.particles.number.density.value_area, t = i.particles.array.length - a; t < 0 ? i.fn.modes.pushParticles(Math.abs(t)) : i.fn.modes.removeParticles(t) } }, i.fn.vendors.checkOverlap = function (e, a) { for (var t = 0; t < i.particles.array.length; t++) { var n = i.particles.array[t], s = e.x - n.x, r = e.y - n.y; Math.sqrt(s * s + r * r) <= e.radius + n.radius && (e.x = a ? a.x : Math.random() * i.canvas.w, e.y = a ? a.y : Math.random() * i.canvas.h, i.fn.vendors.checkOverlap(e)) } }, i.fn.vendors.createSvgImg = function (e) { var a = i.tmp.source_svg.replace(/#([0-9A-F]{3,6})/gi, (function (a, t, i, n) { if (e.color.rgb) var s = "rgba(" + e.color.rgb.r + "," + e.color.rgb.g + "," + e.color.rgb.b + "," + e.opacity + ")"; else s = "hsla(" + e.color.hsl.h + "," + e.color.hsl.s + "%," + e.color.hsl.l + "%," + e.opacity + ")"; return s })), t = new Blob([a], { type: "image/svg+xml;charset=utf-8" }), n = window.URL || window.webkitURL || window, s = n.createObjectURL(t), r = new Image; r.addEventListener("load", (function () { e.img.obj = r, e.img.loaded = !0, n.revokeObjectURL(s), i.tmp.count_svg++ })), r.src = s }, i.fn.vendors.destroypJS = function () { cancelAnimationFrame(i.fn.drawAnimFrame), t.remove(), pJSDom = null }, i.fn.vendors.drawShape = function (e, a, t, i, n, s) { var r = n * s, c = n / s, o = 180 * (c - 2) / c, l = Math.PI - Math.PI * o / 180; e.save(), e.beginPath(), e.translate(a, t), e.moveTo(0, 0); for (var v = 0; v < r; v++)e.lineTo(i, 0), e.translate(i, 0), e.rotate(l); e.fill(), e.restore() }, i.fn.vendors.exportImg = function () { window.open(i.canvas.el.toDataURL("image/png"), "_blank") }, i.fn.vendors.loadImg = function (e) { if (i.tmp.img_error = void 0, "" != i.particles.shape.image.src) if ("svg" == e) { var a = new XMLHttpRequest; a.open("GET", i.particles.shape.image.src), a.onreadystatechange = function (e) { 4 == a.readyState && (200 == a.status ? (i.tmp.source_svg = e.currentTarget.response, i.fn.vendors.checkBeforeDraw()) : (console.log("Error pJS - Image not found"), i.tmp.img_error = !0)) }, a.send() } else { var t = new Image; t.addEventListener("load", (function () { i.tmp.img_obj = t, i.fn.vendors.checkBeforeDraw() })), t.src = i.particles.shape.image.src } else console.log("Error pJS - No image.src"), i.tmp.img_error = !0 }, i.fn.vendors.draw = function () { "image" == i.particles.shape.type ? "svg" == i.tmp.img_type ? i.tmp.count_svg >= i.particles.number.value ? (i.fn.particlesDraw(), i.particles.move.enable ? i.fn.drawAnimFrame = requestAnimFrame(i.fn.vendors.draw) : cancelRequestAnimFrame(i.fn.drawAnimFrame)) : i.tmp.img_error || (i.fn.drawAnimFrame = requestAnimFrame(i.fn.vendors.draw)) : null != i.tmp.img_obj ? (i.fn.particlesDraw(), i.particles.move.enable ? i.fn.drawAnimFrame = requestAnimFrame(i.fn.vendors.draw) : cancelRequestAnimFrame(i.fn.drawAnimFrame)) : i.tmp.img_error || (i.fn.drawAnimFrame = requestAnimFrame(i.fn.vendors.draw)) : (i.fn.particlesDraw(), i.particles.move.enable ? i.fn.drawAnimFrame = requestAnimFrame(i.fn.vendors.draw) : cancelRequestAnimFrame(i.fn.drawAnimFrame)) }, i.fn.vendors.checkBeforeDraw = function () { "image" == i.particles.shape.type ? "svg" == i.tmp.img_type && null == i.tmp.source_svg ? i.tmp.checkAnimFrame = requestAnimFrame(check) : (cancelRequestAnimFrame(i.tmp.checkAnimFrame), i.tmp.img_error || (i.fn.vendors.init(), i.fn.vendors.draw())) : (i.fn.vendors.init(), i.fn.vendors.draw()) }, i.fn.vendors.init = function () { i.fn.retinaInit(), i.fn.canvasInit(), i.fn.canvasSize(), i.fn.canvasPaint(), i.fn.particlesCreate(), i.fn.vendors.densityAutoParticles(), i.particles.line_linked.color_rgb_line = hexToRgb(i.particles.line_linked.color) }, i.fn.vendors.start = function () { isInArray("image", i.particles.shape.type) ? (i.tmp.img_type = i.particles.shape.image.src.substr(i.particles.shape.image.src.length - 3), i.fn.vendors.loadImg(i.tmp.img_type)) : i.fn.vendors.checkBeforeDraw() }, i.fn.vendors.eventsListeners(), i.fn.vendors.start() }; function hexToRgb(e) { e = e.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (function (e, a, t, i) { return a + a + t + t + i + i })); var a = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e); return a ? { r: parseInt(a[1], 16), g: parseInt(a[2], 16), b: parseInt(a[3], 16) } : null } function clamp(e, a, t) { return Math.min(Math.max(e, a), t) } function isInArray(e, a) { return a.indexOf(e) > -1 } Object.deepExtend = function (e, a) { for (var t in a) a[t] && a[t].constructor && a[t].constructor === Object ? (e[t] = e[t] || {}, arguments.callee(e[t], a[t])) : e[t] = a[t]; return e }, window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (e) { window.setTimeout(e, 1e3 / 60) }, window.cancelRequestAnimFrame = window.cancelAnimationFrame || window.webkitCancelRequestAnimationFrame || window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame || window.msCancelRequestAnimationFrame || clearTimeout, window.pJSDom = [], window.particlesJS = function (e, a) { "string" != typeof e && (a = e, e = "particles-js"), e || (e = "particles-js"); var t = document.getElementById(e), i = "particles-js-canvas-el", n = t.getElementsByClassName(i); if (n.length) for (; n.length > 0;)t.removeChild(n[0]); var s = document.createElement("canvas"); s.className = i, s.style.width = "100%", s.style.height = "100%", null != document.getElementById(e).appendChild(s) && pJSDom.push(new pJS(e, a)) }, window.particlesJS.load = function (e, a, t) { var i = new XMLHttpRequest; i.open("GET", a), i.onreadystatechange = function (a) { if (4 == i.readyState) if (200 == i.status) { var n = JSON.parse(a.currentTarget.response); window.particlesJS(e, n), t && t() } else console.log("Error pJS - XMLHttpRequest status: " + i.status), console.log("Error pJS - File config not found") }, i.send() };
-        //# sourceMappingURL=/sm/989ad3d344a46ad94354c16dc2512d23ddb937054ab7980adb822f74145374a7.map
-    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=DM+Mono:wght@300;400;500&amp;display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="/icons/remixicon.css">
     <style>
-        @font-face {
-            font-family: oai;
-            src: url('/font/inter.ttf');
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0d0d12;
+            --surface: #13131a;
+            --surface2: #1a1a24;
+            --border: rgba(139, 92, 246, 0.12);
+            --border-hover: rgba(139, 92, 246, 0.35);
+            --purple: #a78bfa;
+            --purple-dim: #7c3aed;
+            --purple-glow: rgba(167, 139, 250, 0.08);
+            --text: #e8e6f0;
+            --muted: #7b7891;
+            --muted2: #4f4c65;
+            --font-display: 'DM Mono', monospace;
+            --font-mono: 'DM Mono', monospace;
+        }
+
+        html,
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-display);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         body {
-            background: black;
-            background-size: cover;
-            background-attachment: fixed;
-            color: rgb(200, 200, 200);
-            font-family: oai;
-            text-align: left;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 3rem 1.5rem 5rem;
         }
 
-        * {
-            font-family: oai;
+        .wrapper {
+            width: 100%;
+            max-width: 560px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .profile-container {
-            background: rgb(12 12 12);
-            height: max-content;
-            width: 400px;
-            z-index: 1;
-            padding: 20px;
-            border-radius: 20px;
-            outline: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 10px;
-        }
-
-        #particles-container {
-            height: 100vh;
-            width: 100vw;
+        .noise {
             position: fixed;
-            left: 0;
-            top: 0;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        p {
-            color: rgb(125 125 125);
+        .orb {
+            position: fixed;
+            top: -400px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 1200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(103, 8, 255, 0.33) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.75rem 2rem;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .avatar-wrap {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--purple);
+            letter-spacing: -1px;
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 17px;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.4), transparent, rgba(109, 40, 217, 0.2)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+        }
+
+        .hero-info h1 {
+            font: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -1.5px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-info h1 span {
+            color: var(--purple);
+        }
+
+        .handle {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 0.5px;
+        }
+
+        .bio {
+            margin-top: 1.25rem;
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+            font-family: var(--font-mono);
+            font-weight: 300;
+        }
+
+        .bio strong {
+            color: var(--purple);
             font-weight: 500;
         }
 
-        h1 {
-            margin-bottom: -10px;
-            margin-top: 5px;
+        .section-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--muted2);
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
         }
 
-        .banner {
-            background: linear-gradient(45deg, rgb(99, 0, 0), rgb(0, 0, 0));
-            height: 125px;
-            width: 100%;
-            position: relative;
-            left: 0;
-            top: 0;
-            border-radius: 20px 20px 0 0;
-            z-index: 0;
-            width: calc(100% + 40px);
-            margin: -20px -20px -60px -20px;
-        }
-
-        .pfp {
-            position: relative;
-            z-index: 2;
-            background: rgb(12 12 12);
-            border-radius: 50%;
-            height: 100px;
-            padding: 5px;
-            margin-left: -10px;
-        }
-
-
-        .pfp img {
-            z-index: 2947;
-        }
-
-        h3 {
-            font-size: 13px;
-            letter-spacing: 1px;
-            color: transparent;
-            background: linear-gradient(135deg, white 0%, rgb(136, 136, 136) 15%);
-            background-clip: text;
-            margin-bottom: -5px;
-        }
-
-        button.lang {
-            height: 50px;
-            width: 50px;
-            padding: 0px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            cursor: pointer;
-            color: white;
-            text-align: center;
-            aspect-ratio: 1/1;
-            transition: 0.3s all cubic-bezier(.34, 2, .84, 1);
-            margin-right: 10px;
-        }
-
-        button.lang:hover {
-            scale: 1.1;
-            transform: translateY(-15%);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        button.lang:active {
-            scale: 0.95;
-            transform: translateY(0%);
-        }
-
-        button.lang i {
-            font-size: 22px;
-            vertical-align: -2px;
-        }
-
-        .container {
+        .projects-grid {
             display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
         }
 
-        .project-card {
-            height: 120px;
-            width: 100%;
-            background: rgb(15 15 15);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-right: 10px;
-            padding: 15px;
-            margin-bottom: 10px;
-            display: block;
-            min-width: 300px;
-        }
-
-        .project-card h1 {
-            font-size: 20px;
-            margin-top: 15px;
-        }
-
-        .project-card p {
-            font-size: 14px;
-        }
-
-        .project-card button {
-            height: 40px;
-            width: 40px;
-        }
-
-        .project-card button i {
-            font-size: 17px;
-        }
-
-        ::-webkit-scrollbar {
-            background: rgb(15 15 15);
-            border-radius: 25px;
-            width: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgb(25 25 25);
-            border-radius: 25px;
-        }
-
-        a:has(button) {
+        .project-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.55rem 1rem;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 13px;
+            color: var(--text);
+            font-family: var(--font-mono);
             text-decoration: none;
-        }
-
-        .progress-bar {
-            width: 165px;
-            border-radius: 5px;
-            height: 4px;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgb(18 18 18);
-        }
-
-        .progress-bar-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: white;
-            height: 100%;
-            width: 0%;
-            z-index: 239486;
-            border-radius: 238467px;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-            transition: 0.3s;
-        }
-
-        @keyframes progress {
-            0% {
-                width: 0;
-            }
-
-            100% {
-                width: 100%;
-            }
-        }
-
-        .click-to-enter {
-            left: 0;
-            top: 0;
-            position: fixed;
-            height: 100vh;
-            width: 100vw;
-            backdrop-filter: blur(3px) brightness(0.55);
+            transition: all 0.2s;
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        .click-to-enter h2 {
-            color: white;
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            position: fixed;
+        .project-chip:hover {
+            border-color: var(--purple);
+            background: var(--purple-glow);
+            color: var(--purple);
+        }
+
+        .project-chip .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--purple-dim);
+            flex-shrink: 0;
+        }
+
+        .project-chip:hover .dot {
+            background: var(--purple);
+        }
+
+        .socials-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.55rem 1.1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            color: var(--muted);
+            font-family: var(--font-mono);
+            text-decoration: none;
+            transition: all 0.25s;
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            border-color: var(--border-hover);
+            color: var(--text);
+            background: var(--purple-glow);
+        }
+
+        .social-btn svg {
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .social-btn:hover svg {
+            opacity: 1;
+        }
+
+        .footer-stripe {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--muted2);
+        }
+
+        .footer-stripe::before,
+        .footer-stripe::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            background: rgba(167, 139, 250, 0.08);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--purple);
+            letter-spacing: 0.3px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card,
+        .footer-stripe {
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.25s;
+        }
+
+        .footer-stripe {
+            animation-delay: 0.35s;
+        }
+
+        a i  {
+            font-size: 17px;
         }
     </style>
 </head>
 
 <body>
+    <div class="noise"></div>
+    <div class="orb"></div>
 
-    <div id="particles-container"></div>
+    <div class="wrapper">
 
-    <div class="container" style="position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%);">
-        <div class="profile-container">
-            <div class="banner"></div>
-            <img class="pfp" src="/png/pfp.jpg?v=1" alt="">
-            <h1 style="color: white;">x8r</h1>
-            <p>@x8rr</p>
-            <h3>ABOUT</h3>
-            <p>Front end developer, UBG site owner</p>
-            <h3 style="margin-bottom: 0px;">LANGUAGES + SKILLS</h3>
-            <br>
-            <div style="margin-bottom: 20px;" class="container">
-                <button class="lang">
-                    <i class="devicon-html5-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
-                </button>
-                <button class="lang">
-                    <i class="devicon-css3-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
-                </button>
-                <button class="lang">
-                    <i class="devicon-tailwindcss-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
-                </button>
-                <button class="lang">
-                    <i class="devicon-javascript-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
-                </button>
-                <button class="lang">
-                    <i class="devicon-astro-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
-                </button>
-                <button class="lang">
-                    <i class="devicon-react-plain colored" style="filter: drop-shadow(0 0 15px);"></i>
-                </button>
+        <div class="card">
+            <div class="hero">
+                <div class="avatar-wrap">
+                    <img src="/png/pfp.png" class="avatar" alt="">
+                </div>
+                <div class="hero-info">
+                    <h1>x8r</h1>
+                    <div class="handle">@x8r</div>
+                </div>
             </div>
-            <h3 style="margin-bottom: 0;">SOCIALS</h3>
-            <br>
-            <div style="margin-bottom: 20px;" class="container">
-                <a href="https://github.com/x8rr" target="_blank">
-                    <button style="width: 110px;" class="lang">
-                        <i class="ri-github-fill"></i>&nbsp;
-                        <b>Github</b>
-                    </button>
+            <p class="bio">
+                full stack dev &amp; ubg enthusiast —
+                owner of <strong>cherri</strong>.
+                i like to dabble in a lot of areas
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="section-label">projects</div>
+            <div class="projects-grid">
+                <a class="project-chip" href="https://cherrion.top/">
+                    cherri
                 </a>
-                <a href="https://discord.com/users/979137914464247838" target="_blank">
-                    <button class="lang" style="width: 110px;">
-                        <i class="ri-discord-fill"></i>&nbsp;
-                        <b>Discord</b>
-                    </button>
+                <a class="project-chip" href="https://eaglercraftextras.github.io/">
+                    eaglercraft extras
                 </a>
-                <a href="https://steamcommunity.com/id/x8rr/" target="_blank">
-                    <button class="lang" style="width: 110px;">
-                        <i class="ri-steam-fill"></i>&nbsp;
-                        <b>Steam</b>
-                    </button>
+                <a class="project-chip" href="#">
+                    browser.lmao (soon)
                 </a>
             </div>
         </div>
-        <div class="container" style="flex-direction: column;">
-            <div class="profile-container">
-                <div class="container">
-                    <img src="/png/sya.png"
-                        style="border-radius: 15px; margin-right: 20px; filter: drop-shadow(0 0 25px #ff9a1744); height: 125px;"
-                        alt="toxicity album cover">
-                    <div class="container" style="flex-direction: column;">
-                        <h2 style="margin-bottom: -10px; color: white; margin-top: 10px;">See You Again</h2>
-                        <p>Tyler, The Creator</p>
-                        <div class="container">
-                            <button class="lang" style="height: 35px; width: 35px;" onclick="pausePlay()">
-                                <i class="ri-play-fill" style="font-size: 17px;"></i>
-                            </button>
-                            <button class="lang" style="height: 35px; width: 35px;" onclick="muteUnmute()">
-                                <i class="ri-volume-up-line" style="font-size: 17px;"></i>
-                            </button>
-                            <div class="progress-bar">
-                                <div class="progress-bar-fill"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-container">
-                <div class="container"
-                    style="flex-wrap: wrap; height: 335px; overflow-y: auto; mask-image: linear-gradient(to top, transparent 5%, black 15%);">
-                    <div style="height: 10px; margin: 0;"></div>
-                    <div class="project-card">
-                        <h1>Cherri</h1>
-                        <p>Unblocked games website. 1.5k+ users.</p>
-                        <a href="https://cherrion.top/" target="_blank">
-                            <button class="lang">
-                                <i class="ri-external-link-line"></i>
-                            </button>
-                        </a>
-                        <a href="https://github.com/x8rr/cherri" target="_blank">
-                            <button class="lang">
-                                <i class="ri-github-fill"></i>
-                            </button>
-                        </a>
-                        <a href="https://discord.gg/hUYzETaQ9U" target="_blank">
-                            <button class="lang">
-                                <i class="ri-discord-fill"></i>
-                            </button>
-                        </a>
-                    </div>
-                    <div class="project-card">
-                        <h1>Eaglercraft Extras</h1>
-                        <p>Minecraft themed Eaglercraft website.</p>
-                        <a href="https://eaglercraftextras.github.io/" target="_blank">
-                            <button class="lang">
-                                <i class="ri-external-link-line"></i>
-                            </button>
-                        </a>
-                        <a href="https://github.com/x8rr/Eaglercraft-Extras" target="_blank">
-                            <button class="lang">
-                                <i class="ri-github-fill"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
+
+        <div class="card">
+            <div class="section-label">socials</div>
+            <div class="socials-row">
+                <a href="https://github.com/x8rr" class="social-btn">
+                    <i class="ri-github-fill"></i>
+                    github
+                </a>
+                <a href="https://discord.com/users/979137914464247838" class="social-btn">
+                    <i class="ri-discord-fill"></i>
+                    discord
+                </a>
+                <a href="https://steamcommunity.com/id/x8rr" class="social-btn">
+                    <i class="ri-steam-fill"></i>
+                    steam
+                </a>
             </div>
         </div>
+
+        <div class="footer-stripe">x8r.dev</div>
+
     </div>
 
-    <div class="click-to-enter">
-        <h2>click to enter...</h2>
-    </div>
 
-    <audio src="/mp3/sya.mp3" id="audio" loop></audio>
-
-    <script>
-        particlesJS.load("particles-container", "/particles.json", () => {
-            console.log("particles js loaded!")
-        })
-    </script>
-    <script>
-        const cte = document.querySelector(".click-to-enter")
-        const audio = document.getElementById("audio")
-        cte.addEventListener("click", () => {
-            const text = cte.querySelector("h2")
-            cte.style.pointerEvents = "none"
-            setTimeout(() => {
-                text.textContent = "ok"
-            }, 0)
-            setTimeout(() => {
-                text.textContent = "ok ok"
-            }, 400)
-            setTimeout(() => {
-                text.textContent = "ok ok ok"
-            }, 800)
-            setTimeout(() => {
-                text.textContent = "ok ok ok ok"
-            }, 1200)
-            setTimeout(() => {
-                text.textContent = "ok ok ok ok ok"
-            }, 1600)
-            setTimeout(() => {
-                text.textContent = "ok ok ok ok ok ok"
-            }, 2000)
-            setTimeout(() => {
-                text.textContent = "ok ok ok ok ok ok o-"
-            }, 2400)
-            setTimeout(() => {
-                cte.style.opacity = 0;
-            }, 2800)
-            audio.curerntTime = 0
-            pausePlay()
-            document.querySelector(".progress-bar-fill").style.animation = "180s progress linear infinite"
-            document.querySelector(".ri-play-fill").classList.add("ri-pause-fill")
-            document.querySelector(".ri-play-fill").classList.remove("ri-play-fill")
-        })
-
-        function muteUnmute() {
-            if (audio.muted === false) {
-                audio.muted = true
-                document.querySelector(".ri-volume-up-line").classList.add("ri-volume-mute-line")
-                document.querySelector(".ri-volume-up-line").classList.remove("ri-volume-up-line")
-            } else {
-                audio.muted = false
-                document.querySelector(".ri-volume-mute-line").classList.add("ri-volume-up-line")
-                document.querySelector(".ri-volume-mute-line").classList.remove("ri-volume-mute-line")
-            }
-        }
-
-        function pausePlay() {
-            if (audio.paused) {
-                audio.play()
-                document.querySelector(".progress-bar-fill").style.animationPlayState = "running"
-                document.querySelector(".ri-play-fill").classList.add("ri-pause-fill")
-                document.querySelector(".ri-play-fill").classList.remove("ri-play-fill")
-            } else {
-                audio.pause()
-                document.querySelector(".progress-bar-fill").style.animationPlayState = "paused"
-                document.querySelector(".ri-pause-fill").classList.add("ri-play-fill")
-                document.querySelector(".ri-pause-fill").classList.remove("ri-pause-fill")
-            }
-        }
-    </script>
 </body>
 
 </html>

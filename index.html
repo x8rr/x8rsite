@@ -1,394 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>x8r</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=DM+Mono:wght@300;400;500&amp;display=swap"
-        rel="stylesheet">
-        <link rel="stylesheet" href="/icons/remixicon.css">
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --bg: #0d0d12;
-            --surface: #13131a;
-            --surface2: #1a1a24;
-            --border: rgba(139, 92, 246, 0.12);
-            --border-hover: rgba(139, 92, 246, 0.35);
-            --purple: #a78bfa;
-            --purple-dim: #7c3aed;
-            --purple-glow: rgba(167, 139, 250, 0.08);
-            --text: #e8e6f0;
-            --muted: #7b7891;
-            --muted2: #4f4c65;
-            --font-display: 'DM Mono', monospace;
-            --font-mono: 'DM Mono', monospace;
-        }
-
-        html,
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--font-display);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 3rem 1.5rem 5rem;
-        }
-
-        .wrapper {
-            width: 100%;
-            max-width: 560px;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .noise {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-        }
-
-        .orb {
-            position: fixed;
-            top: -400px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 1200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(103, 8, 255, 0.33) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .card {
-            position: relative;
-            z-index: 1;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 1.75rem 2rem;
-            transition: border-color 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--border-hover);
-        }
-
-        .hero {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .avatar-wrap {
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 16px;
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            font-size: 22px;
-            font-weight: 500;
-            color: var(--purple);
-            letter-spacing: -1px;
-        }
-
-        .avatar::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 17px;
-            border: 1px solid transparent;
-            background: linear-gradient(135deg, rgba(167, 139, 250, 0.4), transparent, rgba(109, 40, 217, 0.2)) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-        }
-
-        .hero-info h1 {
-            font: var(--font-mono);
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text);
-            letter-spacing: -1.5px;
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-
-        .hero-info h1 span {
-            color: var(--purple);
-        }
-
-        .handle {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--muted);
-            letter-spacing: 0.5px;
-        }
-
-        .bio {
-            margin-top: 1.25rem;
-            font-size: 14px;
-            color: var(--muted);
-            line-height: 1.6;
-            font-family: var(--font-mono);
-            font-weight: 300;
-        }
-
-        .bio strong {
-            color: var(--purple);
-            font-weight: 500;
-        }
-
-        .section-label {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--muted2);
-            margin-bottom: 1rem;
-            font-family: var(--font-mono);
-        }
-
-        .projects-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .project-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.55rem 1rem;
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            font-size: 13px;
-            color: var(--text);
-            font-family: var(--font-mono);
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .project-chip:hover {
-            border-color: var(--purple);
-            background: var(--purple-glow);
-            color: var(--purple);
-        }
-
-        .project-chip .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--purple-dim);
-            flex-shrink: 0;
-        }
-
-        .project-chip:hover .dot {
-            background: var(--purple);
-        }
-
-        .socials-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.55rem 1.1rem;
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            color: var(--muted);
-            font-family: var(--font-mono);
-            text-decoration: none;
-            transition: all 0.25s;
-            cursor: pointer;
-        }
-
-        .social-btn:hover {
-            border-color: var(--border-hover);
-            color: var(--text);
-            background: var(--purple-glow);
-        }
-
-        .social-btn svg {
-            opacity: 0.6;
-            transition: opacity 0.2s;
-        }
-
-        .social-btn:hover svg {
-            opacity: 1;
-        }
-
-        .footer-stripe {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--muted2);
-        }
-
-        .footer-stripe::before,
-        .footer-stripe::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 2px 8px;
-            background: rgba(167, 139, 250, 0.08);
-            border: 1px solid rgba(167, 139, 250, 0.2);
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--purple);
-            letter-spacing: 0.3px;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card,
-        .footer-stripe {
-            animation: fadeUp 0.5s ease both;
-        }
-
-        .card:nth-child(1) {
-            animation-delay: 0.05s;
-        }
-
-        .card:nth-child(2) {
-            animation-delay: 0.15s;
-        }
-
-        .card:nth-child(3) {
-            animation-delay: 0.25s;
-        }
-
-        .footer-stripe {
-            animation-delay: 0.35s;
-        }
-
-        a i  {
-            font-size: 17px;
-        }
-    </style>
+    <link rel="shortcut icon" href="/png/pfp.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/icons/remixicon.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
 </head>
+<style>
+    @font-face {
+        font-family: boing;
+        src: url(/font/Boing-Thin.ttf);
+        font-weight: 100;
+    }
 
+    @font-face {
+        font-family: boing;
+        src: url(/font/Boing-Light.ttf);
+        font-weight: 300
+    }
+
+    @font-face {
+        font-family: boing;
+        src: url(/font/Boing-Regular.ttf);
+        font-weight: 400;
+    }
+
+    @font-face {
+        font-family: boing;
+        src: url(/font/Boing-Medium.ttf);
+        font-weight: 500;
+    }
+
+    @font-face {
+        font-family: boing;
+        src: url(/font/Boing-Semibold.ttf);
+        font-weight: 600;
+    }
+
+    @font-face {
+        font-family: boing;
+        src: url(/font/Boing-Bold.ttf);
+        font-weight: 700;
+    }
+
+    * {
+        font-family: boing;
+        color: #ddd;
+    }
+
+    h1, h2, h3 {
+        color: white;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    html {
+        background: black;
+    }
+
+    .wrapper {
+        background: rgba(0, 0, 0, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        width: 400px;
+        position: fixed;
+        backdrop-filter: blur(10px);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 0;
+    }
+
+    .wrapper img.pfp {
+        height: 125px;
+        border-radius: 50%;
+        border: 2px rgb(255, 204, 103) solid;
+        filter: drop-shadow(0 0 25px rgb(255, 204, 103, 0.3));
+    }
+
+    .wrapper hr {
+        width: 50%;
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        margin: 20px;
+    }
+
+    .wrapper a img {
+        height: 45px;
+    }
+
+    .wrapper a {
+        text-decoration: none;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .wrapper .tooltip {
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 10px;
+        position: absolute;
+        width: 100px;
+        left: -75%;
+        transform: translateY(5px);
+        z-index: 100;
+        pointer-events: none;
+        transition: 0.2s;
+        opacity: 0;
+        top: 60px;
+    }
+
+    .wrapper a:hover .tooltip {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .projects {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .wrapper a i {
+        font-size: 45px;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    div#entry {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        left: 0;
+        top: 0;
+        z-index: 78342879432;
+        position: fixed;
+        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+        font-size: 20px;
+        transition: 0.2s;
+    }
+
+    div#clouds {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+</style>
 <body>
-    <div class="noise"></div>
-    <div class="orb"></div>
-
     <div class="wrapper">
-
-        <div class="card">
-            <div class="hero">
-                <div class="avatar-wrap">
-                    <img src="/png/pfp.png" class="avatar" alt="">
-                </div>
-                <div class="hero-info">
-                    <h1>x8r</h1>
-                    <div class="handle">@x8r</div>
-                </div>
-            </div>
-            <p class="bio">
-                full stack dev &amp; ubg enthusiast —
-                owner of <strong>cherri</strong>.
-                i like to dabble in a lot of areas
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="section-label">projects</div>
-            <div class="projects-grid">
-                <a class="project-chip" href="https://cherrion.top/">
+        <img src="/png/pfp.webp" class="pfp" alt="">
+        <br>
+        <h1>x8r</h1>
+        <p><i>@x8rr</i></p>
+        <hr>
+        <p>
+            <strong>hi!</strong> i'm x8r, and i like to make web projects. i know html, css, js, astro, node, and some react. my biggest project is cherri, which has only been up for around 5 months but still has garnered a lot of users! check out my projects and socials below :)
+        </p>
+        <hr>
+        <div class="projects">
+            <a href="https://cherrion.top/" target="_blank">
+                <img src="https://cherrion.top/assets/img/fav.png" alt="cherri logo">
+                <div class="tooltip">
                     cherri
-                </a>
-                <a class="project-chip" href="https://eaglercraftextras.github.io/">
+                </div>
+            </a>
+            <a href="https://eaglercraftextras.github.io/" target="_blank">
+                <img src="https://eaglercraftextras.github.io/assets/icon.png" alt="cherri logo">
+                <div class="tooltip">
                     eaglercraft extras
-                </a>
-                <a class="project-chip" href="#">
-                    browser.lmao (soon)
-                </a>
-            </div>
+                </div>
+            </a>
+            <a href="https://github.com/x8rr" target="_blank">
+                <i class="ri-github-fill"></i>
+                <div class="tooltip">
+                    my github
+                </div>
+            </a>
+            <a href="#" target="_blank">
+                <i class="ri-discord-fill"></i>
+                <div class="tooltip">
+                    hvtrs on discord
+                </div>
+            </a>
         </div>
-
-        <div class="card">
-            <div class="section-label">socials</div>
-            <div class="socials-row">
-                <a href="https://github.com/x8rr" class="social-btn">
-                    <i class="ri-github-fill"></i>
-                    github
-                </a>
-                <a href="https://discord.com/users/979137914464247838" class="social-btn">
-                    <i class="ri-discord-fill"></i>
-                    discord
-                </a>
-                <a href="https://steamcommunity.com/id/x8rr" class="social-btn">
-                    <i class="ri-steam-fill"></i>
-                    steam
-                </a>
-            </div>
-        </div>
-
-        <div class="footer-stripe">x8r.dev</div>
-
     </div>
-
-
+    <div id="entry">
+        click to enter...
+    </div>
+    <div id="clouds"></div>
+    <audio src="/mp3/paranoia.flac" id="music"></audio>
+    <script>
+        const overlay = document.getElementById("entry")
+        const audio = document.getElementById("music")
+        overlay.addEventListener("click", () => {
+            overlay.removeEventListener("click", () => {
+                console.log("removed event listener")
+            })
+            overlay.style.opacity = 0
+            audio.play()
+            setTimeout(() => {
+                overlay.style.display = "none"
+            }, 250)
+        })
+    </script>
+    <script>
+        VANTA.CLOUDS({
+            el: "#clouds",
+            mouseControls: false,
+            touchControls: false,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00
+        })
+    </script>
 </body>
-
 </html>

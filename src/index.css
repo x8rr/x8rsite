@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@font-face {
+    font-family: bytebounce;
+    src: url("/fonts/ByteBounce.ttf");
+}
+.font-pixel {
+    font-family: bytebounce;
+}

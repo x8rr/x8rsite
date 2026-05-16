@@ -91,6 +91,54 @@ export default function App() {
             </div>
           </a>
         </div>
+        <div className="flex-row flex gap-1 items-center">
+          <p className="text-xs opacity-25">skills</p>
+          <div className="mt-3 flex-1 mb-3 h-0 border border-white/5"></div>
+        </div>
+        <div className="flex flex-row flex-wrap gap-1">
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-html5-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-css3-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-javascript-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-typescript-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-nodejs-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-fastify-plain text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-bun-plain text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-astro-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-react-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-python-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-cplusplus-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-git-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-archlinux-plain colored text-xl"></i>
+          </div>
+          <div className="bg-white/2 h-9.75 w-9.75 box-border flex flex-row justify-center px-2 items-center">
+            <i className="devicon-windows11-plain colored text-xl"></i>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import "@fontsource/inter/100";
+@import "@fontsource/inter/200";
+@import "@fontsource/inter/300";
+@import "@fontsource/inter/400";
+@import "@fontsource/inter/500";
+@import "@fontsource/inter/600";
+@import "@fontsource/inter/700";
+@import "@fontsource/inter/800";
+@import "@fontsource/inter/900";
+@font-face {
+  font-family: bytebounce;
+  src: url("/fonts/ByteBounce.ttf");
+}
+
+* {
+  font-family: "inter";
+  color: #bbb;
+}
+
+h1, h2 {
+  color: white;
+}
+
+.font-pixel {
+  font-family: bytebounce;
+}
+
+body, html {
+  margin: 0;
+  background: black;
+  position: relative;
+}
+
+body::after {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  content: "";
+  z-index: -1;
+}
+
+.crt-effect-wrapper.scanlines-on::after {
+  --scanline-opacity: 0.35 !important;
+  mix-blend-mode: normal !important;
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.18) 1px,
+      transparent 2px,
+      transparent 4px) !important;
+}
+
+.crt-effect-wrapper {
+  filter: contrast(1.25) brightness(1.1);
+}
+
+body {
+  background: rgb(5, 5, 5);
+}
+
+body::after {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%);
+  opacity: 0.15;
+}

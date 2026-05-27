@@ -4,7 +4,7 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 opacity-15 bg-[repeating-linear-gradient(to_bottom,rgba(255,183,218,0.08)_0px,rgba(255,183,218,0.08)_1px,transparent_2px,transparent_4px)]" />
       <div className="pointer-events-none fixed inset-0 opacity-30 bg-[radial-gradient(circle,rgba(255,183,218,0.05),transparent_60%)]" />
 
-      <div className="w-[340px] bg-[#231f24] border border-[#362e37] rounded-3xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.4)] relative">
+      <div className="w-[340px] bg-[#231f24] border border-[#362e37] rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.4)] relative">
         <div className="h-[105px] w-full relative overflow-hidden bg-[#2d252f]">
           <img
             src="/img/banner.jpg"
@@ -20,7 +20,7 @@ export default function App() {
               <div className="w-[84px] h-[84px] rounded-3xl bg-[#231f24] flex items-center justify-center p-[5px]">
                 <img
                   src="/img/pfp.png"
-                  className="w-full h-full rounded-xl bg-[#181619] object-cover"
+                  className="w-full h-full rounded-2xl bg-[#181619] object-cover"
                   alt="Profile"
                 />
               </div>

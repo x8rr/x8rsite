@@ -17,10 +17,10 @@ export default function App() {
         <div className="px-4 pb-4 relative">
           <div className="absolute -top-[45px] left-3">
             <div className="relative group">
-              <div className="w-[84px] h-[84px] rounded-3xl bg-[#231f24] flex items-center justify-center p-[5px]">
+              <div className="w-[84px] h-[84px] rounded-full bg-[#231f24] flex items-center justify-center p-[5px]">
                 <img
                   src="/img/pfp.png"
-                  className="w-full h-full rounded-2xl bg-[#181619] object-cover"
+                  className="w-full h-full rounded-full bg-[#181619] object-cover"
                   alt="Profile"
                 />
               </div>

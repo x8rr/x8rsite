@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
 
+type DiscordStatus = "online" | "idle" | "dnd" | "offline";
+
 export default function App() {
-  const [status, setStatus] = useState(null);
-  const [statusIcon, setStatusIcon] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState<DiscordStatus>("offline");
 
   useEffect(() => {
     const fetchDiscordStatus = async () => {
@@ -16,22 +16,14 @@ export default function App() {
 
         if (data.success && data.data) {
           const userData = data.data;
-          const currentStatus = userData.discord_status || "offline";
+          const currentStatus = (userData.discord_status ||
+            "offline") as DiscordStatus;
 
           setStatus(currentStatus);
-
-          if (userData.activities && userData.activities.length > 0) {
-            const mainActivity = userData.activities[0];
-            if (mainActivity.emoji) {
-              setStatusIcon(mainActivity.emoji);
-            }
-          }
         }
-        setLoading(false);
       } catch (error) {
         console.error("Failed to fetch Discord status:", error);
         setStatus("offline");
-        setLoading(false);
       }
     };
 
@@ -40,14 +32,14 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const statusColors = {
+  const statusColors: Record<DiscordStatus, string> = {
     online: "#23a55a",
     idle: "#faa61a",
     dnd: "#f23636",
     offline: "#747f8d",
   };
 
-  const statusLabels = {
+  const statusLabels: Record<DiscordStatus, string> = {
     online: "Online",
     idle: "Idle",
     dnd: "Do Not Disturb",
@@ -82,8 +74,8 @@ export default function App() {
 
               <div
                 className="absolute bottom-0.5 right-0.5 w-[24px] h-[24px] rounded-full border-[4px] border-[#231f24] flex items-center justify-center shadow-lg transition-colors duration-300"
-                style={{ backgroundColor: statusColors[status] || "#747f8d" }}
-                title={statusLabels[status] || "Loading..."}
+                style={{ backgroundColor: statusColors[status] }}
+                title={statusLabels[status]}
               ></div>
             </div>
           </div>

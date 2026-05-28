@@ -1,4 +1,59 @@
+import { useState, useEffect } from "react";
+import { ExternalLink } from "lucide-react";
+
 export default function App() {
+  const [status, setStatus] = useState(null);
+  const [statusIcon, setStatusIcon] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDiscordStatus = async () => {
+      try {
+        const response = await fetch(
+          "https://api.lanyard.rest/v1/users/979137914464247838",
+        );
+        const data = await response.json();
+
+        if (data.success && data.data) {
+          const userData = data.data;
+          const currentStatus = userData.discord_status || "offline";
+
+          setStatus(currentStatus);
+
+          if (userData.activities && userData.activities.length > 0) {
+            const mainActivity = userData.activities[0];
+            if (mainActivity.emoji) {
+              setStatusIcon(mainActivity.emoji);
+            }
+          }
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch Discord status:", error);
+        setStatus("offline");
+        setLoading(false);
+      }
+    };
+
+    fetchDiscordStatus();
+    const interval = setInterval(fetchDiscordStatus, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const statusColors = {
+    online: "#23a55a",
+    idle: "#faa61a",
+    dnd: "#f23636",
+    offline: "#747f8d",
+  };
+
+  const statusLabels = {
+    online: "Online",
+    idle: "Idle",
+    dnd: "Do Not Disturb",
+    offline: "Offline",
+  };
+
   return (
     <div className="relative min-h-screen bg-[#181619] text-[#e3dbe4] flex items-center justify-center font-geist antialiased selection:bg-[#ffb7da]/30 selection:text-white">
       <div className="pointer-events-none fixed inset-0 opacity-15 bg-[repeating-linear-gradient(to_bottom,rgba(255,183,218,0.08)_0px,rgba(255,183,218,0.08)_1px,transparent_2px,transparent_4px)]" />
@@ -24,7 +79,12 @@ export default function App() {
                   alt="Profile"
                 />
               </div>
-              <div className="absolute bottom-[2px] right-[2px] w-[18px] h-[18px] bg-[#23a55a] rounded-full border-[3.5px] border-[#231f24]" />
+
+              <div
+                className="absolute bottom-0.5 right-0.5 w-[24px] h-[24px] rounded-full border-[4px] border-[#231f24] flex items-center justify-center shadow-lg transition-colors duration-300"
+                style={{ backgroundColor: statusColors[status] || "#747f8d" }}
+                title={statusLabels[status] || "Loading..."}
+              ></div>
             </div>
           </div>
 
@@ -33,7 +93,7 @@ export default function App() {
               hvtrs (x8r)
             </h1>
             <p className="text-[13px] text-[#ccaec0] mt-0.5 font-normal">
-              fullstack dev, owner of cherri
+              fullstack dev, owner of cherri, developer at vortex
             </p>
           </div>
 
@@ -57,7 +117,7 @@ export default function App() {
                     cherri
                   </span>
                   <span className="text-[10px] text-[#ffb7da] ml-auto opacity-0 group-hover:opacity-80 transition-all transform translate-x-1 group-hover:translate-x-0">
-                    ↗
+                    <ExternalLink height={12} width={12} />
                   </span>
                 </a>
                 <a
@@ -74,7 +134,24 @@ export default function App() {
                     eaglercraft extras
                   </span>
                   <span className="text-[10px] text-[#ffb7da] ml-auto opacity-0 group-hover:opacity-80 transition-all transform translate-x-1 group-hover:translate-x-0">
-                    ↗
+                    <ExternalLink height={12} width={12} />
+                  </span>
+                </a>
+                <a
+                  href="#"
+                  target=""
+                  className="flex items-center gap-2.5 px-2 py-1.5 rounded-lg hover:bg-[#ffb7da]/10 transition-all duration-200 group"
+                >
+                  <img
+                    src="/img/stratus.svg"
+                    className="h-[18px] w-[18px] rounded-md object-contain"
+                    alt=""
+                  />
+                  <span className="text-[13px] font-medium text-[#e3dbe4] group-hover:text-[#ffcfe6] transition-colors">
+                    stratus (WIP)
+                  </span>
+                  <span className="text-[10px] text-[#ffb7da] ml-auto opacity-0 group-hover:opacity-80 transition-all transform translate-x-1 group-hover:translate-x-0">
+                    <ExternalLink height={12} width={12} />
                   </span>
                 </a>
               </div>
@@ -101,7 +178,7 @@ export default function App() {
                     nautilus labs
                   </span>
                   <span className="text-[10px] text-[#ffb7da] ml-auto opacity-0 group-hover:opacity-80 transition-all transform translate-x-1 group-hover:translate-x-0">
-                    ↗
+                    <ExternalLink height={12} width={12} />
                   </span>
                 </a>
                 <a
@@ -118,7 +195,7 @@ export default function App() {
                     wilted services
                   </span>
                   <span className="text-[10px] text-[#ffb7da] ml-auto opacity-0 group-hover:opacity-80 transition-all transform translate-x-1 group-hover:translate-x-0">
-                    ↗
+                    <ExternalLink height={12} width={12} />
                   </span>
                 </a>
               </div>
@@ -155,7 +232,7 @@ export default function App() {
                     github
                   </span>
                   <span className="text-[10px] text-[#ffb7da] ml-auto opacity-0 group-hover:opacity-80 transition-all transform translate-x-1 group-hover:translate-x-0">
-                    ↗
+                    <ExternalLink height={12} width={12} />
                   </span>
                 </a>
               </div>
@@ -207,7 +284,9 @@ export default function App() {
         </div>
       </div>
 
-      <p className="fixed bottom-3 left-1/2 -translate-x-1/2 text-xs opacity-10">as long as i have nitro, i'm forced to be a femboy</p>
+      <p className="fixed bottom-3 left-1/2 -translate-x-1/2 text-xs opacity-10">
+        as long as i have nitro, i'm forced to be a femboy
+      </p>
     </div>
   );
 }

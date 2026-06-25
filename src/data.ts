@@ -90,6 +90,24 @@ export const SOCIALS: Social[] = [
   },
 ];
 
+export type ButtonItem = { src: string; alt: string; href?: string };
+
+// 88x31 buttons. own button first (no link), then sites/tools i like.
+export const BUTTONS: ButtonItem[] = [
+  { src: "/img/button.png", alt: "x8r" },
+  { src: "/img/buttons/technonyte.png", alt: "technonyte", href: "https://nyte.one/" },
+  { src: "/img/buttons/github.png", alt: "GitHub", href: "https://github.com/" },
+  { src: "/img/buttons/discord.png", alt: "Discord", href: "https://discord.com/" },
+  { src: "/img/buttons/spotify.png", alt: "Spotify", href: "https://spotify.com/" },
+  { src: "/img/buttons/steam.png", alt: "Steam", href: "https://store.steampowered.com/" },
+  { src: "/img/buttons/vscode.png", alt: "VS Code", href: "https://code.visualstudio.com/" },
+  { src: "/img/buttons/ublock.png", alt: "uBlock Origin", href: "https://ublockorigin.com/" },
+  { src: "/img/buttons/endeavour.png", alt: "EndeavourOS", href: "https://endeavouros.com/" },
+  { src: "/img/buttons/minecraft.png", alt: "Minecraft", href: "https://minecraft.net/" },
+  { src: "/img/buttons/gd.png", alt: "Geometry Dash", href: "https://store.steampowered.com/app/322170/Geometry_Dash/" },
+  { src: "/img/buttons/hollowknight.png", alt: "Hollow Knight", href: "https://store.steampowered.com/app/367520/Hollow_Knight/" },
+];
+
 export const SKILLS = [
   "html5",
   "css3",

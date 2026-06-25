@@ -1,5 +1,5 @@
 import type { Lanyard } from "../lib/useLanyard";
-import { SOCIALS } from "../data";
+import { SOCIALS, BUTTONS } from "../data";
 import Eyebrow from "../components/Eyebrow";
 import NowPlaying from "../components/NowPlaying";
 import { BRAND } from "../components/BrandIcons";
@@ -40,7 +40,10 @@ export default function Home({
           <span className="mx-1 text-faint">·</span>
           <span
             className="inline-block h-2 w-2 rounded-full transition-colors duration-300"
-            style={{ backgroundColor: s.color, boxShadow: `0 0 7px ${s.color}` }}
+            style={{
+              backgroundColor: s.color,
+              boxShadow: `0 0 7px ${s.color}`,
+            }}
           />
           <span className="text-muted">{s.label}</span>
         </div>
@@ -52,9 +55,12 @@ export default function Home({
 
       {/* bio card */}
       <div className="mt-6 rounded-2xl border border-white/8 bg-ink p-5 leading-relaxed text-soft">
-        i'm a <b className="font-semibold text-bone">14 yo fullstack developer</b>. i own{" "}
-        <b className="font-semibold text-bone">cherri</b> and also help work on{" "}
-        <b className="font-semibold text-bone">vortex</b>. i mainly do web development, but i'm open to doing anything outside of that field. take a look at my{" "}
+        i'm a{" "}
+        <b className="font-semibold text-bone">14 yo fullstack developer</b>. i
+        own <b className="font-semibold text-bone">cherri</b> and also help work
+        on <b className="font-semibold text-bone">vortex</b>. i mainly do web
+        development, but i'm open to doing anything outside of that field. take
+        a look at my{" "}
         <button
           onClick={() => onGoto("work")}
           className="font-semibold text-accent underline-offset-4 hover:underline"
@@ -92,6 +98,38 @@ export default function Home({
             </a>
           );
         })}
+      </div>
+
+      <div className="mt-8">
+        <Eyebrow>buttons</Eyebrow>
+        <div className="mt-3 grid grid-cols-6 gap-2">
+          {BUTTONS.map((b) => {
+            const img = (
+              <img
+                src={b.src}
+                alt={b.alt}
+                className="aspect-[88/31] w-full rounded-[3px] border border-white/8 transition-transform hover:scale-105"
+                style={{ imageRendering: "pixelated" }}
+              />
+            );
+            return b.href ? (
+              <a
+                key={b.src}
+                href={b.href}
+                target="_blank"
+                rel="noreferrer"
+                title={b.alt}
+                className="block"
+              >
+                {img}
+              </a>
+            ) : (
+              <span key={b.src} title={b.alt} className="block">
+                {img}
+              </span>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

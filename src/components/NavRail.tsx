@@ -1,19 +1,22 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
-export type SectionId = "home" | "work" | "music";
+export type SectionId = "home" | "work" | "music" | "announcements";
 
 const ITEMS: { id: SectionId; label: string }[] = [
   { id: "home", label: "home" },
   { id: "work", label: "work" },
   { id: "music", label: "music" },
+  { id: "announcements", label: "updates" },
 ];
 
 export default function NavRail({
   active,
   onSelect,
+  dots = [],
 }: {
   active: SectionId;
   onSelect: (id: SectionId) => void;
+  dots?: SectionId[];
 }) {
   const listRef = useRef<HTMLUListElement>(null);
   const itemRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -56,6 +59,7 @@ export default function NavRail({
           />
           {ITEMS.map(({ id, label }) => {
             const on = active === id;
+            const hasDot = dots.includes(id);
             return (
               <li key={id}>
                 <button
@@ -65,11 +69,14 @@ export default function NavRail({
                   type="button"
                   onClick={() => onSelect(id)}
                   aria-current={on ? "page" : undefined}
-                  className={`relative z-10 rounded-full px-3.5 py-1.5 font-mono text-sm transition-colors ${
+                  className={`relative z-10 flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-mono text-sm transition-colors ${
                     on ? "text-bone" : "text-muted hover:text-bone"
                   }`}
                 >
                   {label}
+                  {hasDot && (
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-2 opacity-80" />
+                  )}
                 </button>
               </li>
             );

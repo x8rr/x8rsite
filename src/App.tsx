@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Starfield from "./Starfield";
 import NavRail, { type SectionId } from "./components/NavRail";
 import ViewCounter from "./components/ViewCounter";
@@ -6,10 +6,23 @@ import { useLanyard } from "./lib/useLanyard";
 import Home from "./sections/Home";
 import Work from "./sections/Work";
 import Music from "./sections/Music";
+import Announcements from "./sections/Announcements";
+import { ANNOUNCEMENTS } from "./data";
+
+const RECENT_DAYS = 7;
 
 export default function App() {
   const [section, setSection] = useState<SectionId>("home");
   const lanyard = useLanyard();
+
+  const navDots = useMemo<SectionId[]>(() => {
+    if (section === "announcements") return [];
+    const cutoff = Date.now() - RECENT_DAYS * 86_400_000;
+    const hasRecent = ANNOUNCEMENTS.some(
+      (a) => new Date(a.date).getTime() >= cutoff
+    );
+    return hasRecent ? ["announcements"] : [];
+  }, [section]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden text-bone selection:bg-accent/25">
@@ -17,7 +30,7 @@ export default function App() {
       <div className="grid-bg" />
       <div className="vignette" />
 
-      <NavRail active={section} onSelect={setSection} />
+      <NavRail active={section} onSelect={setSection} dots={navDots} />
       <ViewCounter />
 
       <main className="relative z-[2] mx-auto flex min-h-screen max-w-2xl flex-col justify-center px-6 pb-20 pt-28">
@@ -26,6 +39,7 @@ export default function App() {
         )}
         {section === "work" && <Work key="work" />}
         {section === "music" && <Music key="music" lanyard={lanyard} />}
+        {section === "announcements" && <Announcements key="announcements" />}
       </main>
     </div>
   );

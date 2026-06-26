@@ -108,6 +108,25 @@ export const BUTTONS: ButtonItem[] = [
   { src: "/img/buttons/hollowknight.png", alt: "Hollow Knight", href: "https://store.steampowered.com/app/367520/Hollow_Knight/" },
 ];
 
+export type Announcement = {
+  date: string; // e.g. "2026-06-26"
+  title: string;
+  body: string;
+};
+
+export const ANNOUNCEMENTS: Announcement[] = [
+  {
+    date: "2026-06-25",
+    title: "site is live :D",
+    body: "welcome to the new site! still tweaking things so expect some changes here and there.",
+  },
+  {
+    date: "2026-06-26",
+    title: "cherri v2 goes open source!",
+    body: "go check out https://github.com/x8rr/cherri-v2-leak to see the repo. people wanna leak my shit, i'll do it myself",
+  },
+];
+
 export const SKILLS = [
   "html5",
   "css3",

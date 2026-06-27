@@ -39,11 +39,11 @@ export const PROJECTS: Project[] = [
     live: true,
   },
   {
-    name: "stratus (work in progress)",
-    href: "#",
+    name: "stratus api",
+    href: "https://github.com/x8rr/stratus-api",
     icon: "/img/stratus.svg",
     blurb: "simple cloud gaming API for developers with 180+ titles",
-    live: false,
+    live: true,
   },
 ];
 
@@ -111,7 +111,7 @@ export const BUTTONS: ButtonItem[] = [
 export type Announcement = {
   date: string; // e.g. "2026-06-26"
   title: string;
-  body: string;
+  body: string; // paragraphs separated by \n\n
 };
 
 export const ANNOUNCEMENTS: Announcement[] = [
@@ -123,12 +123,12 @@ export const ANNOUNCEMENTS: Announcement[] = [
   {
     date: "2026-06-26",
     title: "cherri v2 goes open source!",
-    body: "go check out https://github.com/x8rr/cherri-v2-leak to see the repo. people wanna leak my shit, i'll do it myself",
+    body: "go check out https://github.com/x8rr/cherri-v2-leak to see the repo. people wanna leak my shit, i'll do it myself\n\nanyway, the newest version of cherri is finally out to the public now! it's pretty good, even though the last like...10 commits on the actual development repo have been all claude because i just got my subscription lmao.",
   },
   {
     date: "2026-06-26",
     title: "stratus (also) goes open source!",
-    body: "i've been leading a project called stratus for some time now, and we aim to let developers integrate 180+ AAA cloud gaming titles into their websites. check out https://github.com/x8rr/stratus-api to use it (and star!)",
+    body: "i've been leading a project called stratus for some time now, and we aim to let developers integrate 180+ AAA cloud gaming titles into their websites. check out https://github.com/x8rr/stratus-api to use it (and star!)\n\nthe api is pretty simple. create a session by passing in a game ID from raccoongame, then streaming with the returned session id. easy, quick, 15 minute sessions for tons of games on your website.",
   },
 ];
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ANNOUNCEMENTS, type Announcement } from "../data";
-import Eyebrow from "../components/Eyebrow";
 
 const URL_RE = /(https?:\/\/[^\s]+)/g;
 

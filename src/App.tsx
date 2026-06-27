@@ -9,7 +9,14 @@ import Music from "./sections/Music";
 import Announcements from "./sections/Announcements";
 import { ANNOUNCEMENTS } from "./data";
 
-const RECENT_DAYS = 7;
+function hasUnseenPosts(): boolean {
+  try {
+    const seen = new Set(JSON.parse(localStorage.getItem("seen_posts") ?? "[]"));
+    return ANNOUNCEMENTS.some((a) => !seen.has(`${a.date}::${a.title}`));
+  } catch {
+    return false;
+  }
+}
 
 export default function App() {
   const [section, setSection] = useState<SectionId>("home");
@@ -17,11 +24,7 @@ export default function App() {
 
   const navDots = useMemo<SectionId[]>(() => {
     if (section === "announcements") return [];
-    const cutoff = Date.now() - RECENT_DAYS * 86_400_000;
-    const hasRecent = ANNOUNCEMENTS.some(
-      (a) => new Date(a.date).getTime() >= cutoff
-    );
-    return hasRecent ? ["announcements"] : [];
+    return hasUnseenPosts() ? ["announcements"] : [];
   }, [section]);
 
   return (

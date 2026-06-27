@@ -5,7 +5,6 @@ import Eyebrow from "../components/Eyebrow";
 export default function Work() {
   return (
     <div className="swap">
-      <Eyebrow>my work</Eyebrow>
       <h1 className="mt-3 text-4xl font-bold tracking-tight text-bone">
         projects
       </h1>

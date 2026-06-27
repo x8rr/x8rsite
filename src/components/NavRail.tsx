@@ -6,7 +6,7 @@ const ITEMS: { id: SectionId; label: string }[] = [
   { id: "home", label: "home" },
   { id: "work", label: "work" },
   { id: "music", label: "music" },
-  { id: "announcements", label: "updates" },
+  { id: "announcements", label: "blog" },
 ];
 
 export default function NavRail({

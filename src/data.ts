@@ -125,6 +125,11 @@ export const ANNOUNCEMENTS: Announcement[] = [
     title: "cherri v2 goes open source!",
     body: "go check out https://github.com/x8rr/cherri-v2-leak to see the repo. people wanna leak my shit, i'll do it myself",
   },
+  {
+    date: "2026-06-26",
+    title: "stratus (also) goes open source!",
+    body: "i've been leading a project called stratus for some time now, and we aim to let developers integrate 180+ AAA cloud gaming titles into their websites. check out https://github.com/x8rr/stratus-api to use it (and star!)",
+  },
 ];
 
 export const SKILLS = [

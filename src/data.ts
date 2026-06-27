@@ -95,7 +95,7 @@ export type ButtonItem = { src: string; alt: string; href?: string };
 // 88x31 buttons. own button first (no link), then sites/tools i like.
 export const BUTTONS: ButtonItem[] = [
   { src: "/img/button.png", alt: "x8r" },
-  { src: "/img/buttons/technonyte.png", alt: "technonyte", href: "https://nyte.one/" },
+  { src: "/img/buttons/starlight.jpg", alt: "starlight", href: "https://starlighton.top/" },
   { src: "/img/buttons/github.png", alt: "GitHub", href: "https://github.com/" },
   { src: "/img/buttons/discord.png", alt: "Discord", href: "https://discord.com/" },
   { src: "/img/buttons/spotify.png", alt: "Spotify", href: "https://spotify.com/" },

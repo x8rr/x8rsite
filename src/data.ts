@@ -1,4 +1,4 @@
-export const DISCORD_ID = "1452708222405185616";
+export const DISCORD_ID = "979137914464247838";
 
 export type Project = {
   name: string;
@@ -49,7 +49,8 @@ export const PROJECTS: Project[] = [
     name: "sapphire",
     href: "https://github.com/x8rr/sapphire",
     icon: "/img/sapphire.png",
-    blurb: "an extension compatibility library allowing chrome extensions (MV3) to run in a website",
+    blurb:
+      "an extension compatibility library allowing chrome extensions (MV3) to run in a website",
     live: true,
   },
 ];

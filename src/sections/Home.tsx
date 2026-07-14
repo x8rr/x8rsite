@@ -36,7 +36,7 @@ export default function Home({
             alt=""
             className="h-5 w-5 rounded-full object-cover"
           />
-          @4pgx
+          @hvtrs
           <span className="mx-1 text-faint">·</span>
           <span
             className="inline-block h-2 w-2 rounded-full transition-colors duration-300"

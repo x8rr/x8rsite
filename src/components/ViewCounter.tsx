@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Eye } from "lucide-react";
 
-// Best-effort view counter via the free counterapi.dev. Stays hidden if the
-// service is unreachable rather than showing a broken/zero state.
+// Self-hosted view counter on a Cloudflare Worker (workers/counter). Stays
+// hidden if the service is unreachable rather than showing a broken/zero state.
 export default function ViewCounter() {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
     let alive = true;
-    fetch("https://api.counterapi.dev/v2/x8r-dev/site-views/up")
+    fetch("https://counter.x8r.dev/up")
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
         if (alive && typeof j?.count === "number") setCount(j.count);

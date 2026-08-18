@@ -8,7 +8,7 @@ export default function ViewCounter() {
 
   useEffect(() => {
     let alive = true;
-    fetch("https://api.counterapi.dev/v1/x8r-dev/site-views/up")
+    fetch("https://api.counterapi.dev/v2/x8r-dev/site-views/up")
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
         if (alive && typeof j?.count === "number") setCount(j.count);

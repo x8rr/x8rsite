@@ -217,6 +217,11 @@ export const ANNOUNCEMENTS: Announcement[] = [
     title: "introducing sapphire",
     body: "i've been working on a project called sapphire — a way to run chrome extensions (manifest v3 only right now) inside a website. \n\n it's built with typescript, and is a plugin made to be used with scramjet v2. you can grab it over at https://github.com/x8rr/sapphire ! it's a fork of carbonicality/amethyst, and is a full rewrite, aiming to improve the compatibility. (also, just because i used an em dash in my sentences doesn't mean this is ai :/ )",
   },
+  {
+    date: "2026-08-17",
+    title: "music update! (yay)",
+    body: "long time no see eh? well i updated my music api, which can be found at https://github.com/x8rr/music and is super very cool. i basically fixed music by adding another source that's easy asf to scrape, so feel free to use it for personal use or inside your projects. credit plz.",
+  },
 ];
 
 export const SKILLS = [

@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #1565d8;
+}
+
+/* wallpaper: "Computer Nature City 01 (Practical Design)" by 아사달 (Asadal), CC BY 4.0
+   https://commons.wikimedia.org/wiki/File:Computer_Nature_City_01_(Practical_Design).jpg */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #1565d8 url("/img/frutiger-aero.jpg?v=4") center / cover no-repeat fixed;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+main {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title-bar-text {
+  margin: 0;
+}
+
+/* 98.css's pixel font is only sharp at 11px, so use a regular font to go bigger */
+main .window,
+main .window * {
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: auto;
+}
+
+p {
+  margin: 0;
+}
+
+ul.tree-view a {
+  color: #00f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+ul.tree-view a:hover,
+ul.tree-view a:focus {
+  background-color: navy;
+  color: #fff;
+}

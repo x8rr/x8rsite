@@ -42,7 +42,6 @@
   --page-fg: #fff;
   --page-glow-a: color-mix(in oklab, var(--theme-a) 9%, transparent);
   --page-glow-b: color-mix(in oklab, var(--theme-b) 10%, transparent);
-  --particle: 255 255 255;
 }
 :root[data-scheme="light"] {
   --fg: color-mix(in oklab, var(--theme-b) 25%, #1d1615);
@@ -62,7 +61,6 @@
   --page-fg: var(--fg);
   --page-glow-a: color-mix(in oklab, var(--theme-a) 85%, white);
   --page-glow-b: color-mix(in oklab, var(--theme-b) 80%, black);
-  --particle: 90 60 52;
 }
 
 @theme {

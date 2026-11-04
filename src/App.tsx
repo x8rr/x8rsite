@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import Particles from "./components/Particles";
 import Veil from "./components/Veil";
 import Splash from "./components/Splash";
 import { DISCORD_ID } from "./data";
@@ -55,7 +54,6 @@ export default function App() {
   return (
     <>
       <Veil />
-      <Particles />
       <AnimatePresence>{!entered && <Splash onEnter={enter} />}</AnimatePresence>
 
       <main className="mx-auto grid max-w-[1080px] grid-cols-1 items-start gap-3 px-4 py-10 sm:py-16 lg:grid-cols-[400px_1fr]">

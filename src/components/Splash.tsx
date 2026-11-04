@@ -12,7 +12,7 @@ export default function Splash({ onEnter }: { onEnter: () => void }) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       aria-label="click to enter"
     >
-      <AsciiPfp src={avatar(160)} className="h-auto w-[min(520px,90vw)]" />
+      <AsciiPfp src={avatar(480)} className="h-auto w-[min(540px,88vw)]" />
       <h2 className="font-mono text-sm text-neutral-500">
         click to enter<span className="blink">...</span>
       </h2>

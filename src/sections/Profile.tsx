@@ -33,7 +33,7 @@ export default function Profile() {
     <article className="panel relative overflow-hidden">
       {/* banner: your discord banner, else a gradient off the pfp */}
       <div className="relative h-36 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,var(--accent),black)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,var(--theme-a),var(--theme-b))]" />
         {dc?.banner && <img src={dc.banner} alt="" className="absolute inset-0 size-full object-cover" />}
       </div>
 

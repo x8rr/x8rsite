@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-scheme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +9,19 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/159058655?s=64" />
     <meta property="og:title" content="x8r" />
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/159058655?s=400" />
+    <script>
+      // paint the last discord theme this browser saw before anything loads,
+      // so there's no flash of a placeholder colour
+      try {
+        var t = JSON.parse(localStorage.getItem("x8r:theme"));
+        if (t && /^#[0-9a-f]{6}$/i.test(t.a) && /^#[0-9a-f]{6}$/i.test(t.b)) {
+          var r = document.documentElement;
+          r.style.setProperty("--theme-a", t.a);
+          r.style.setProperty("--theme-b", t.b);
+          r.dataset.scheme = t.scheme === "dark" ? "dark" : "light";
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

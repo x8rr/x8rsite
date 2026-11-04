@@ -3,15 +3,13 @@ import { AnimatePresence, motion } from "motion/react";
 import Particles from "./components/Particles";
 import Veil from "./components/Veil";
 import Splash from "./components/Splash";
-import { avatar, DISCORD_ID } from "./data";
-import { isLight, useAccent, useDiscordProfile, type Rgb } from "./lib/hooks";
+import { DISCORD_ID } from "./data";
+import { isLight, useDiscordProfile } from "./lib/hooks";
 import { useLanyard } from "./lib/lanyard";
 import Profile from "./sections/Profile";
 import { GamesCard, SpotifyCard } from "./sections/Activity";
 import Projects from "./sections/Projects";
 import Buttons from "./sections/Buttons";
-
-const FALLBACK: Rgb = [185, 28, 28];
 
 const seen = () => {
   try {
@@ -25,19 +23,21 @@ export default function App() {
   const p = useLanyard();
   const [entered, setEntered] = useState(seen);
   const dc = useDiscordProfile(DISCORD_ID);
-  // without a discord profile theme, tint off whatever's playing, else the pfp
-  const sampled = useAccent(p.spotify?.art ?? avatar(64), FALLBACK);
   const theme = dc?.theme;
 
+  // apply the live discord theme, and remember it so the next load paints it
+  // straight away (see the inline script in index.html)
   useEffect(() => {
-    const root = document.documentElement.style;
-    root.setProperty("--accent", theme ? theme[0] : `rgb(${sampled.join(" ")})`);
-    if (theme) {
-      root.setProperty("--theme-a", theme[0]);
-      root.setProperty("--theme-b", theme[1]);
-      document.documentElement.dataset.scheme = isLight(theme[0]) ? "light" : "dark";
-    }
-  }, [theme, sampled]);
+    if (!theme) return;
+    const root = document.documentElement;
+    const scheme = isLight(theme[0]) ? "light" : "dark";
+    root.style.setProperty("--theme-a", theme[0]);
+    root.style.setProperty("--theme-b", theme[1]);
+    root.dataset.scheme = scheme;
+    try {
+      localStorage.setItem("x8r:theme", JSON.stringify({ a: theme[0], b: theme[1], scheme }));
+    } catch {}
+  }, [theme]);
 
   const enter = () => {
     try {

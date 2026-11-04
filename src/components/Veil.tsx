@@ -106,14 +106,14 @@ export default function Veil() {
       gl.uniform2f(uRes, canvas.width, canvas.height);
     };
 
-    // colours come from the theme css vars; eased so theme changes blend in
-    const a = [0.95, 0.86, 0.83], b = [0.65, 0.49, 0.43];
+    // colours come from the theme css vars, starting from whatever is already
+    // there (never a guess), then eased so a live theme change blends in
     let dark = 0;
     let want: { ta: number[] | null; tb: number[] | null } = { ta: null, tb: null };
     const readTheme = () => {
       const cs = getComputedStyle(document.documentElement);
-      const ta = parse(cs.getPropertyValue("--theme-a")) ?? parse(cs.getPropertyValue("--accent"));
-      const tb = parse(cs.getPropertyValue("--theme-b")) ?? ta;
+      const ta = parse(cs.getPropertyValue("--theme-a"));
+      const tb = parse(cs.getPropertyValue("--theme-b"));
       return { ta, tb, isDark: document.documentElement.dataset.scheme !== "light" };
     };
 
@@ -146,6 +146,8 @@ export default function Veil() {
       if (!document.hidden) raf = requestAnimationFrame(draw);
     };
 
+    const first = readTheme();
+    const a = [...(first.ta ?? [0.95, 0.86, 0.83])], b = [...(first.tb ?? [0.65, 0.49, 0.43])];
     const sync = () => {
       const { ta, tb, isDark } = readTheme();
       want = { ta, tb };

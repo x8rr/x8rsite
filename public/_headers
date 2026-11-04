@@ -1,0 +1,8 @@
+# the 88x31 is regenerated hourly from the live profile (scripts/button), so
+# keep caches short and let other sites hotlink it
+/img/button.gif
+  Cache-Control: public, max-age=600
+  Access-Control-Allow-Origin: *
+/img/button.png
+  Cache-Control: public, max-age=600
+  Access-Control-Allow-Origin: *

@@ -1,7 +1,12 @@
 import { BUTTONS, type ButtonItem } from "../data";
+import LiveButton from "../components/LiveButton";
 
 function Badge({ b }: { b: ButtonItem }) {
-  const img = (
+  const img = b.live ? (
+    <span title="grab it: x8r.dev/img/button.gif">
+      <LiveButton className="transition duration-300 ease-bounce group-hover:-translate-y-1 group-hover:scale-110" />
+    </span>
+  ) : (
     <img
       src={b.src}
       alt={b.alt}

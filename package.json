@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "bun run build && wrangler pages deploy dist --project-name x8rsite --branch main"
+    "deploy": "bun run build && wrangler pages deploy dist --project-name x8rsite --branch main",
+    "button": "node scripts/button/render.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.3.0",
@@ -22,6 +23,9 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.2.1",
+    "gifenc": "^1.0.3",
+    "playwright": "^1.64.1",
+    "pngjs": "^7.0.0",
     "tailwindcss": "^4.3.4",
     "typescript": "^7.0.2",
     "vite": "^8.3.5",

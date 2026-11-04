@@ -111,11 +111,12 @@ export const SOCIALS: Social[] = [
   { key: "email", label: "email", href: "mailto:me@x8r.dev" },
 ];
 
-export type ButtonItem = { src: string; alt: string; href?: string };
+// live: draw it with LiveButton instead of the image (own button only)
+export type ButtonItem = { src: string; alt: string; href?: string; live?: boolean };
 
 // 88x31s. own button first (no link), then sites/tools i like
 export const BUTTONS: ButtonItem[] = [
-  { src: "/img/button.gif", alt: "x8r" },
+  { src: "/img/button.gif", alt: "x8r", live: true },
   { src: "/img/buttons/geeked.png", alt: "geeked.wtf", href: "https://geeked.wtf/" },
   { src: "/img/buttons/github.png", alt: "GitHub", href: "https://github.com/" },
   { src: "/img/buttons/discord.png", alt: "Discord", href: "https://discord.com/" },

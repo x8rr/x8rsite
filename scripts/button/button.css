@@ -1,0 +1,148 @@
+/* the x8r 88x31. one stylesheet for both the live button on the site
+   (src/components/LiveButton.tsx, animated by the keyframes below) and the
+   gif/png that render.mjs snapshots frame by frame for other sites.
+
+   --a / --b: discord profile theme colours. --fg: text colour.
+   --s: shine position, --bob: pfp bob, --cur: cursor visibility. */
+
+@font-face {
+  font-family: "ByteBounce";
+  src: url("/fonts/ByteBounce.ttf") format("truetype");
+  font-display: block;
+}
+
+@property --s {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: -20px;
+}
+@property --bob {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+@property --cur {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+.x8r-btn {
+  --a: #f2dbd3;
+  --b: #a77c6d;
+  --fg: #3a2622;
+  position: relative;
+  display: block;
+  width: 88px;
+  height: 31px;
+  overflow: hidden;
+  font-family: "ByteBounce", monospace;
+  -webkit-font-smoothing: none;
+  background: linear-gradient(160deg, var(--a) 0%, color-mix(in oklab, var(--a) 55%, var(--b)) 45%, var(--b) 100%);
+}
+/* light sweep */
+.x8r-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent calc(var(--s) - 14px),
+    rgb(255 255 255 / 0.75) var(--s),
+    transparent calc(var(--s) + 14px)
+  );
+}
+/* glossy edge */
+.x8r-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.45),
+    inset 0 -1px 0 1px color-mix(in oklab, var(--b) 60%, rgb(0 0 0 / 0.35));
+}
+
+.x8r-btn .pfp {
+  position: absolute;
+  left: 4px;
+  top: calc(4px + var(--bob));
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* zoomed toward the face so it reads at 23px */
+.x8r-btn .pfp img {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  max-width: none;
+  left: -22%;
+  top: -32%;
+}
+.x8r-btn .deco {
+  position: absolute;
+  left: 1px;
+  top: calc(1px + var(--bob));
+  width: 29px;
+  height: 29px;
+  max-width: none;
+}
+.x8r-btn .t {
+  position: absolute;
+  left: 33px;
+  top: 8px;
+  font-size: 16px;
+  line-height: 16px;
+  white-space: nowrap;
+  color: var(--fg);
+}
+.x8r-btn .cur {
+  opacity: var(--cur);
+}
+
+/* the live one animates itself; render.mjs leaves .live off and sets the
+   vars per frame. timings match the gif: 36 frames x 70ms */
+.x8r-btn.live {
+  animation:
+    x8r-shine 2.52s linear infinite,
+    x8r-bob 2.52s ease-in-out infinite,
+    x8r-cur 1.26s steps(1) infinite;
+}
+@keyframes x8r-shine {
+  0% {
+    --s: -20px;
+  }
+  48% {
+    --s: 110px;
+  }
+  100% {
+    --s: 140px;
+  }
+}
+@keyframes x8r-bob {
+  0%,
+  100% {
+    --bob: 0px;
+  }
+  25% {
+    --bob: 1px;
+  }
+  75% {
+    --bob: -1px;
+  }
+}
+@keyframes x8r-cur {
+  0% {
+    --cur: 1;
+  }
+  50% {
+    --cur: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .x8r-btn.live {
+    animation: none;
+  }
+}

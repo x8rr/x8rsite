@@ -1,0 +1,308 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+/* registered so colours can fade when they change */
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #b91c1c;
+}
+/* discord nitro profile theme, set from the live profile (see App.tsx).
+   transparent until it loads, which leaves the plain dark look */
+@property --theme-a {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --theme-b {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+/* how far through the current lyric line we are, see Activity.tsx */
+@property --fill {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: -8%;
+}
+
+/* card colours. like discord, a light profile theme gets light cards with dark
+   text and a dark one gets dark cards; App.tsx sets data-scheme from the theme */
+:root {
+  --fg: #fff;
+  --soft: rgb(212 212 212);
+  --dim: rgb(125 125 125);
+  --faint: rgb(82 82 82);
+  --inset: rgb(0 0 0 / 0.32);
+  --line: color-mix(in oklab, var(--theme-a) 22%, rgb(255 255 255 / 0.1));
+  --panel-top: color-mix(in oklab, var(--theme-a) 13%, rgb(11 11 11));
+  --panel-bottom: color-mix(in oklab, var(--theme-b) 13%, rgb(11 11 11));
+  --edge: color-mix(in oklab, var(--theme-a) 28%, rgb(255 255 255 / 0.1));
+  --sheen: rgb(255 255 255 / 0.06);
+  --glass: 62%;
+  --label: color-mix(in oklab, var(--theme-a) 55%, rgb(160 160 160));
+  --bar: color-mix(in oklab, var(--theme-a) 70%, white);
+  --page: #000;
+  --page-fg: #fff;
+  --page-glow-a: color-mix(in oklab, var(--theme-a) 9%, transparent);
+  --page-glow-b: color-mix(in oklab, var(--theme-b) 10%, transparent);
+  --particle: 255 255 255;
+}
+:root[data-scheme="light"] {
+  --fg: color-mix(in oklab, var(--theme-b) 25%, #1d1615);
+  --soft: color-mix(in oklab, var(--theme-b) 40%, #2a201e);
+  --dim: color-mix(in oklab, var(--theme-b) 75%, #2a201e);
+  --faint: color-mix(in oklab, var(--theme-b) 70%, white);
+  --inset: rgb(255 255 255 / 0.42);
+  --line: rgb(0 0 0 / 0.08);
+  --panel-top: color-mix(in oklab, var(--theme-a) 90%, white);
+  --panel-bottom: color-mix(in oklab, var(--theme-b) 62%, white);
+  --edge: color-mix(in oklab, var(--theme-b) 22%, rgb(255 255 255 / 0.35));
+  --sheen: rgb(255 255 255 / 0.55);
+  --glass: 52%;
+  --label: color-mix(in oklab, var(--theme-b) 55%, black);
+  --bar: color-mix(in oklab, var(--theme-b) 60%, black);
+  --page: color-mix(in oklab, var(--theme-b) 45%, var(--theme-a));
+  --page-fg: var(--fg);
+  --page-glow-a: color-mix(in oklab, var(--theme-a) 85%, white);
+  --page-glow-b: color-mix(in oklab, var(--theme-b) 80%, black);
+  --particle: 90 60 52;
+}
+
+@theme {
+  --color-fg: var(--fg);
+  --color-soft: var(--soft);
+  --color-dim: var(--dim);
+  --color-faint: var(--faint);
+  --color-panel: var(--panel-top);
+  --color-inset: var(--inset);
+  --color-line: var(--line);
+  --color-bar: var(--bar);
+  --color-page-fg: var(--page-fg);
+  --color-accent: var(--accent);
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+  --ease-bounce: cubic-bezier(0.34, 2, 0.84, 1);
+}
+
+:root {
+  color-scheme: dark;
+  transition:
+    --accent 1.4s ease,
+    --theme-a 1s ease,
+    --theme-b 1s ease;
+}
+
+html {
+  background:
+    radial-gradient(80% 60% at 0% 0%, var(--page-glow-a), transparent 70%),
+    radial-gradient(80% 60% at 100% 100%, var(--page-glow-b), transparent 70%),
+    var(--page);
+  background-attachment: fixed;
+  overflow-x: clip;
+}
+body {
+  margin: 0;
+  color: var(--page-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--theme-a) 70%, white);
+  color: #000;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background: rgb(15 15 15);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(35 35 35);
+  border-radius: 99px;
+}
+
+/* the box everything lives in, themed like a discord nitro profile: the two
+   theme colours run top to bottom, with a gradient border */
+.panel {
+  color: var(--fg);
+  border: 1px solid var(--edge);
+  border-radius: 20px;
+  /* glass: the veil shows through, blurred */
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--panel-top) var(--glass), transparent),
+    color-mix(in oklab, var(--panel-bottom) var(--glass), transparent)
+  );
+  background-clip: padding-box;
+  backdrop-filter: blur(22px) saturate(1.5);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  box-shadow:
+    inset 0 1px 0 var(--sheen),
+    0 12px 32px -18px rgb(0 0 0 / 0.35);
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+/* the old site's square icon buttons, springy hover and all */
+.sq {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  color: var(--fg);
+  transition:
+    translate 0.3s var(--ease-bounce),
+    scale 0.3s var(--ease-bounce),
+    background 0.2s;
+}
+.sq:hover {
+  scale: 1.1;
+  translate: 0 -15%;
+  background: color-mix(in oklab, var(--fg) 10%, transparent);
+}
+.sq:active {
+  scale: 0.95;
+  translate: 0 0;
+}
+
+/* anything that lifts on hover moves out from under the cursor, loses hover,
+   drops back, and flickers. while hovered, stretch an invisible hit area
+   down over the spot it lifted from so the hover holds */
+.sq::after,
+.lift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.sq:hover::after,
+.lift:hover::after {
+  bottom: -45%;
+}
+.lift {
+  position: relative;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--speed, 40s) linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+.marquee-pause:hover .marquee {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.fade-x {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.blink {
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.eq span {
+  animation: eq 0.9s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+@keyframes eq {
+  0% {
+    transform: scaleY(0.25);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* lyric lines: ease between states, and the sung line fills with --fill
+   (duration/delay are set per line in Activity.tsx) */
+.lyric {
+  --fill: -8%;
+  color: transparent;
+  background: linear-gradient(90deg, var(--fg) var(--fill), color-mix(in oklab, var(--fg) 38%, transparent) calc(var(--fill) + 6%));
+  background-clip: text;
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease,
+    scale 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    --fill 0s linear;
+}
+.lyric[data-state="current"] {
+  --fill: 106%;
+}
+.lyric[data-state="past"] {
+  --fill: 106%;
+}
+
+.breathe {
+  animation: breathe 1.4s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.25;
+    scale: 0.8;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.1;
+  }
+}
+
+/* white-on-transparent logos vanish on light cards, so only flip them on dark */
+:root:not([data-scheme="light"]) .invert-on-dark {
+  filter: invert(1);
+}
+
+/* discord's status shapes, cut out with the card colour */
+.status {
+  border-radius: 9999px;
+  border: 5px solid var(--color-panel);
+  background: var(--status);
+  transition: background 0.5s;
+}
+.status[data-status="idle"] {
+  background: radial-gradient(circle at 18% 22%, var(--color-panel) 0 38%, transparent 39%), var(--status);
+}
+.status[data-status="dnd"] {
+  background: linear-gradient(var(--color-panel), var(--color-panel)) center / 60% 26% no-repeat, var(--status);
+}
+.status[data-status="offline"] {
+  background: radial-gradient(circle, var(--color-panel) 0 32%, transparent 33%), var(--status);
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

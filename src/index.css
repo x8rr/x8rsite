@@ -2,18 +2,19 @@
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
 
-/* discord nitro profile theme. these initial values are the real theme (also
-   the fallback if discord can't be reached); index.html swaps in the last theme
-   this browser saw before first paint, and App.tsx keeps it live */
+/* discord nitro profile theme, or the pfp's colours when there isn't one.
+   these initial values are the current look (also the fallback if discord
+   can't be reached); index.html swaps in the last theme this browser saw
+   before first paint, and App.tsx keeps it live */
 @property --theme-a {
   syntax: "<color>";
   inherits: true;
-  initial-value: #f2dbd3;
+  initial-value: #080808;
 }
 @property --theme-b {
   syntax: "<color>";
   inherits: true;
-  initial-value: #a77c6d;
+  initial-value: #bcbcbc;
 }
 /* how far through the current lyric line we are, see Activity.tsx */
 @property --fill {

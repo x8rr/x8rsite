@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { COUNTER } from "../data";
+import { avatar, COUNTER } from "../data";
+import { paletteFromPixels } from "../../scripts/button/palette.mjs";
 import type { Spotify } from "./lanyard";
 
 export function useNow(every = 1000): number {
@@ -34,7 +35,7 @@ export function useViewCount(): number | null {
 
 export type DiscordProfile = {
   banner: string | null;
-  // nitro profile theme: [top, bottom]
+  // nitro profile theme: [top, bottom]. without one, taken from the pfp
   theme: [string, string] | null;
   pronouns: string;
   badges: { label: string; icon: string }[];
@@ -52,6 +53,23 @@ export function isLight(hexColor: string): boolean {
 const hex = (n: number) => `#${n.toString(16).padStart(6, "0")}`;
 let profileReq: Promise<DiscordProfile | null> | null = null;
 
+// the pfp's two main tones (see scripts/button/palette.mjs)
+async function pfpTheme(): Promise<[string, string] | null> {
+  const img = new Image();
+  img.crossOrigin = "anonymous";
+  img.src = avatar(64);
+  try {
+    await img.decode();
+  } catch {
+    return null;
+  }
+  const c = document.createElement("canvas");
+  c.width = c.height = 64;
+  const ctx = c.getContext("2d", { willReadFrequently: true })!;
+  ctx.drawImage(img, 0, 0, 64, 64);
+  return paletteFromPixels(ctx.getImageData(0, 0, 64, 64).data, 64);
+}
+
 // lanyard doesn't carry banner/theme/pronouns, so read them from dstn's public
 // profile endpoint. one request shared by everything that asks
 export function useDiscordProfile(id: string): DiscordProfile | null {
@@ -60,13 +78,13 @@ export function useDiscordProfile(id: string): DiscordProfile | null {
     let alive = true;
     profileReq ??= fetch(`https://dcdn.dstn.to/profile/${id}`)
       .then((r) => (r.ok ? r.json() : null))
-      .then((j) => {
+      .then(async (j) => {
         if (!j?.user) return null;
         const hash: string | undefined = j.user_profile?.banner ?? j.user.banner;
         const tc: number[] | undefined = j.user_profile?.theme_colors;
         return {
           banner: hash ? `https://cdn.discordapp.com/banners/${id}/${hash}.${hash.startsWith("a_") ? "gif" : "png"}?size=600` : null,
-          theme: tc?.length === 2 ? [hex(tc[0]), hex(tc[1])] : null,
+          theme: tc?.length === 2 ? [hex(tc[0]), hex(tc[1])] : await pfpTheme(),
           pronouns: j.user_profile?.pronouns ?? "",
           badges: (j.badges ?? []).map((b: { description: string; icon: string }) => ({
             label: b.description,

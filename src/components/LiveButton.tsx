@@ -3,12 +3,13 @@ import { avatar, DISCORD_ID } from "../data";
 import { isLight, useDiscordProfile } from "../lib/hooks";
 import { useLanyard } from "../lib/lanyard";
 
-// the x8r 88x31, drawn live from the current pfp, decoration and discord theme.
-// same stylesheet render.mjs uses for the hotlinkable gif, so they always match
+// the x8r 88x31, drawn live from the current pfp, decoration and discord theme
+// (or pfp colours). same stylesheet render.mjs uses for the hotlinkable gif, so
+// they always match
 export default function LiveButton({ className = "" }: { className?: string }) {
   const p = useLanyard();
   const theme = useDiscordProfile(DISCORD_ID)?.theme;
-  const [a, b] = theme ?? ["#f2dbd3", "#a77c6d"];
+  const [a, b] = theme ?? ["#080808", "#bcbcbc"];
   const fg = isLight(a) ? `color-mix(in oklab, ${b} 30%, #1d1615)` : "#fff";
 
   return (

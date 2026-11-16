@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import gifenc from "gifenc";
 import { PNG } from "pngjs";
+import { paletteFromPixels } from "./palette.mjs";
 
 const { GIFEncoder, quantize, applyPalette } = gifenc;
 
@@ -54,9 +55,10 @@ const [pfp, profile, lanyard] = await Promise.all([
   json(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`),
 ]);
 
+// nitro theme if set; otherwise the colours come from the pfp, worked out in
+// the browser below exactly like the site does
 const tc = profile.user_profile?.theme_colors;
-const [a, b] = tc?.length === 2 ? tc.map(hex) : ["#f2dbd3", "#a77c6d"];
-const fg = isLight(a) ? `color-mix(in oklab, ${b} 30%, #1d1615)` : "#fff";
+const themed = tc?.length === 2 ? tc.map(hex) : null;
 const decoAsset = lanyard.data?.discord_user?.avatar_decoration_data?.asset;
 const deco = decoAsset
   ? await bytes(`https://cdn.discordapp.com/avatar-decoration-presets/${decoAsset}.png?size=96&passthrough=false`)
@@ -68,9 +70,10 @@ const font = readFileSync(join(root, "public", "fonts", "ByteBounce.ttf"));
 const fingerprint = createHash("sha256")
   .update(css)
   .update(readFileSync(fileURLToPath(import.meta.url)))
+  .update(readFileSync(join(here, "palette.mjs")))
   .update(pfp)
   .update(deco ?? "")
-  .update(`${a}${b}`)
+  .update(JSON.stringify(themed))
   .digest("hex");
 
 const force = process.argv.includes("--force");
@@ -87,6 +90,29 @@ if (unchanged) {
   process.exit(0);
 }
 
+const browser = await chromium.launch({
+  executablePath: process.env.CHROME_PATH || undefined,
+  args: ["--font-render-hinting=none", "--disable-font-subpixel-positioning"],
+});
+const page = await browser.newPage({ viewport: { width: 120, height: 60 }, deviceScaleFactor: 1 });
+
+const [a, b] =
+  themed ??
+  paletteFromPixels(
+    await page.evaluate(async (src) => {
+      const img = new Image();
+      img.src = src;
+      await img.decode();
+      const c = document.createElement("canvas");
+      c.width = c.height = 64;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(img, 0, 0, 64, 64);
+      return Array.from(ctx.getImageData(0, 0, 64, 64).data);
+    }, dataUri("image/png", pfp)),
+    64,
+  );
+const fg = isLight(a) ? `color-mix(in oklab, ${b} 30%, #1d1615)` : "#fff";
+
 // ---- render with chrome so it's pixel-identical to the live css version
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 ${css.replace('url("/fonts/ByteBounce.ttf")', `url("${dataUri("font/ttf", font)}")`)}
@@ -98,11 +124,6 @@ body { margin: 0; background: #000; }
   <span class="t">x8r.dev<span class="cur">_</span></span>
 </div></body></html>`;
 
-const browser = await chromium.launch({
-  executablePath: process.env.CHROME_PATH || undefined,
-  args: ["--font-render-hinting=none", "--disable-font-subpixel-positioning"],
-});
-const page = await browser.newPage({ viewport: { width: 120, height: 60 }, deviceScaleFactor: 1 });
 await page.setContent(html);
 await page.evaluate(() => document.fonts.ready);
 await page.waitForTimeout(200);

@@ -2,7 +2,7 @@
    (src/components/LiveButton.tsx, animated by the keyframes below) and the
    gif/png that render.mjs snapshots frame by frame for other sites.
 
-   --a / --b: discord profile theme colours. --fg: text colour.
+   --a / --b: discord profile theme colours (or the pfp's). --fg: text colour.
    --s: shine position, --bob: pfp bob, --cur: cursor visibility. */
 
 @font-face {
@@ -28,9 +28,9 @@
 }
 
 .x8r-btn {
-  --a: #f2dbd3;
-  --b: #a77c6d;
-  --fg: #3a2622;
+  --a: #080808;
+  --b: #bcbcbc;
+  --fg: #fff;
   position: relative;
   display: block;
   width: 88px;
